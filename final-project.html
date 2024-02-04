@@ -32,8 +32,8 @@
     <strong>The Core Components:</strong>
     <ul>
         <li><strong>QR Code Integration:</strong> Each seat is equipped with a unique QR code, affixed in a visible location, such as the seat back or armrest. This QR code serves as the digital identifier for the seat, linking it to the event's seating database.</li>
-        <li><strong>SIM7600 Microcontrollers:</strong> The system utilizes SIM7600 microcontrollers for their LTE capabilities, low cost, and versatility. These microcontrollers are connected to a central server and manage the real-time data transmission of seat availability and user interactions.</li>
-        <li><strong>User Registration and Notification System:</strong> Fans interested in upgrading their seats can register for notifications through a dedicated mobile application or website. This platform allows them to set preferences for seat locations, price ranges, and timing.</li>
+        <li><strong>SIM7600 Microcontrollers:</strong> The system utilizes SIM7600 microcontrollers for their LTE capabilities, low cost, and versatility. These microcontrollers are connected to a central server and manage the real-time data transmission of seat availability and user interactions. When a seat becomes available, the device sends a signal via the SIM7600 module to the event's central server, updating the seat's status in the system. This information is then pushed to the mobile application or website where fans can view available seats and make bids or requests for seat upgrades.</li>
+        <li><strong>User Registration and Notification System:</strong> Fans interested in upgrading their seats can register for notifications through a dedicated mobile application or website. This platform allows them to set preferences for seat locations, price ranges, and timing. Fans that match the criteria for available seats (based on their preferences set in the app) receive alerts through SMS or app notifications, facilitated by the SIM7600's ability to interact with the cellular network for sending SMS directly or through internet data for app notifications.</li>
     </ul>
 </div>
 
