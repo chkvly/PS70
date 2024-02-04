@@ -57,5 +57,18 @@
 <p><strong>Conclusion:</strong></p>
 <p>This system not only maximizes the utilization of seating but also enhances the fan experience by offering spontaneous seat upgrades. It would be collaborative through fan interaction and experimental through real-time feedback and iteration.</p>
 
+<script>
+window.addEventListener('DOMContentLoaded', (event) => {
+    const fadeSections = document.querySelectorAll('.fade-section');
+    fadeSections.forEach((section, index) => {
+        // Increase delay for each section
+        const delay = index * 1000; // Adjust timing as needed
+        setTimeout(() => {
+            section.style.opacity = 1;
+        }, delay);
+    });
+});
+</script>
+
 </body>
 </html>
