@@ -19,9 +19,14 @@
 </head>
 <body>
 
+
 <h1>Final Project Proposal: <strong>A Real-Time Seat Bidding Mechanism to Address the Extreme Inefficiency of Underutilized Seating at the US Open via SIM7600 Microcontrollers and QR Codes</strong></h1>
 
+<div class="fade-section">
+
 <p>This project proposes a dynamic and user-centred technological solution to a common problem faced at the US Open tennis tournament, paving the way for a more engaging, satisfying, and dynamic event experience for fans, while simultaneously offering tangible benefits for tournament organizers in terms of revenue and data insights.</p>
+
+<div class="fade-section">
 
 <strong>The Core Components:</strong>
 <ul>
@@ -29,6 +34,7 @@
     <li><strong>ESP32 Microcontrollers:</strong> The system utilizes SIM7600 microcontrollers for their LTE capabilities, low cost, and versatility. These microcontrollers are connected to a central server and manage the real-time data transmission of seat availability and user interactions.</li>
     <li><strong>User Registration and Notification System:</strong> Fans interested in upgrading their seats can register for notifications through a dedicated mobile application or website. This platform allows them to set preferences for seat locations, price ranges, and timing.</li>
 </ul>
+<div class="fade-section">
 
 <strong>The Process Flow:</strong>
 <ul>
@@ -38,6 +44,7 @@
     <li><strong>Seat Allocation:</strong> Once a bid is accepted, or a fan claims the seat through a first-come, first-served process, they receive a digital pass or QR code, granting them access to the seat for the specified duration.</li>
     <li><strong>Feedback and Iteration:</strong> Fans provide feedback on their experience, which is analyzed to continuously improve the system. This iterative process is fundamental to design thinking, ensuring the solution remains user-focused and adapts to changing needs and technologies.</li>
 </ul>
+<div class="fade-section">
 
 <p><strong>For Fans:</strong></p>
 <ul>
@@ -46,6 +53,7 @@
     <li><strong>Enhanced Engagement:</strong> The excitement of bidding for seat upgrades or receiving notifications about available prime seats adds an interactive layer to the event experience, keeping fans engaged and connected.</li>
     <li><strong>Flexibility and Convenience:</strong> Fans can spontaneously decide to upgrade their seats during the event, adding a level of flexibility and personalization to their experience.</li>
 </ul>
+<div class="fade-section">
 
 <p><strong>For Tournament Organizers:</strong></p>
 <ul>
@@ -53,6 +61,7 @@
     <li><strong>Enhanced Reputation:</strong> Implementing innovative solutions that prioritize fan experience positions the tournament as a leader in customer engagement and technology use, potentially attracting more attendees and sponsors.</li>
     <li><strong>Data Collection and Insights:</strong> The system provides valuable data on fan behavior, preferences, and seating patterns. This data can inform future marketing strategies, event planning, and pricing models, leading to more informed decisions and improved event management.</li>
 </ul>
+<div class="fade-section">
 
 <p><strong>Conclusion:</strong></p>
 <p>This system not only maximizes the utilization of seating but also enhances the fan experience by offering spontaneous seat upgrades. It would be collaborative through fan interaction and experimental through real-time feedback and iteration.</p>
@@ -61,10 +70,9 @@
 window.addEventListener('DOMContentLoaded', (event) => {
     const fadeSections = document.querySelectorAll('.fade-section');
     fadeSections.forEach((section, index) => {
-        // Increase delay for each section
-        const delay = index * 1000; // Adjust timing as needed
+        const delay = index * 300; // Using a 300ms interval between each section's fade-in start
         setTimeout(() => {
-            section.style.opacity = 1;
+            section.style.opacity = 1; // Apply the fade-in effect
         }, delay);
     });
 });
