@@ -4,6 +4,30 @@
     <meta charset="UTF-8">
     <title>PS70: Introduction to Digital Fabrication</title>
     <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        .video-background {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -100;
+            background-size: cover;
+        }
+        .content {
+            position: relative;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.8); /* Adjusted for better readability */
+            padding: 20px;
+            margin-top: 50px; /* Added margin for content visibility */
+        }
         body {
             font-family: 'Candara', sans-serif;
         }
@@ -14,9 +38,10 @@
         .link-list {
             list-style-type: none;
             padding: 0;
+            padding-left: 40px; /* Adds indentation to the entire list */
         }
         .link-list li {
-            margin: 20px 0;
+            margin: 10px 0;
         }
         a {
             text-decoration: none;
@@ -25,42 +50,32 @@
     </style>
 </head>
 <body>
-    <h1 class="heading">PS70: Introduction to Digital Fabrication</h1>
-    <h2 class="name"><a href="https://www.linkedin.com/in/mehtakabir/">Kabir Mehta</a></h2>
-    <p>Bio: Technocrat</p>
-    <p>Program: Master in Public Policy '24 at Harvard Kennedy School</p>
+    <div class="video-background">
+        <iframe src="https://www.youtube.com/embed/RJ8ObhRcpeY?autoplay=1&controls=0&showinfo=0&autohide=1&loop=1&playlist=RJ8ObhRcpeY&start=38" frameborder="0" allow="autoplay; encrypted-media; fullscreen" style="height:100%;width:100%"></iframe>
+    </div>
+    <div class="content">
+        <h1 class="heading">PS70: Introduction to Digital Fabrication</h1>
+        <h2 class="name"><a href="https://www.linkedin.com/in/mehtakabir/">Kabir Mehta</a></h2>
+        <p>Bio: Technocrat</p>
+        <p>Program: Master in Public Policy '24 at Harvard Kennedy School</p>
 
-<style>
-    .link-list {
-        list-style-type: none;
-        padding: 0;
-        padding-left: 40px; /* Adds indentation to the entire list */
-    }
-    .link-list li {
-        margin: 10px 0;
-    }
-    a {
-        text-decoration: none;
-        color: black;
-    }
-</style>
-
-    <ul class="link-list">
-        <li><a href="#">Week 1: Introduction & Documentation</a></li>
-        <li><a href="#">Week 2: 2D Design & Cutting</a></li>
-        <li><a href="#">Week 3: Hand tools and fabrication</a></li>
-        <li><a href="#">Week 4: Microcontroller Programming</a></li>
-        <li><a href="#">Week 5: 3D Design & Printing</a></li>
-        <li><a href="#">Week 6: Electronic Input Devices</a></li>
-        <li><a href="#">Week 7: Electronic Output Devices</a></li>
-        <li><a href="#">Week 8: CNC Milling</a></li>
-        <li><a href="#">Week 9: Radio, WiFi, Bluetooth (IoT)</a></li>
-        <li><a href="#">Week 10: Machine Building and End Effectors</a></li>
-        <li><a href="#">Week 11: Project Integration</a></li>
-        <li><a href="#">Week 12: Machine Demo</a></li>
-        <li><a href="#">Week 13: Interface Design</a></li>
-        <li><a href="#">Week 14: Project Prep</a></li>
-        <li><a href="#">Final Project</a></li>
-    </ul>
+        <ul class="link-list">
+            <li><a href="#">Week 1: Introduction & Documentation</a></li>
+            <li><a href="#">Week 2: 2D Design & Cutting</a></li>
+            <li><a href="#">Week 3: Hand tools and fabrication</a></li>
+            <li><a href="#">Week 4: Microcontroller Programming</a></li>
+            <li><a href="#">Week 5: 3D Design & Printing</a></li>
+            <li><a href="#">Week 6: Electronic Input Devices</a></li>
+            <li><a href="#">Week 7: Electronic Output Devices</a></li>
+            <li><a href="#">Week 8: CNC Milling</a></li>
+            <li><a href="#">Week 9: Radio, WiFi, Bluetooth (IoT)</a></li>
+            <li><a href="#">Week 10: Machine Building and End Effectors</a></li>
+            <li><a href="#">Week 11: Project Integration</a></li>
+            <li><a href="#">Week 12: Machine Demo</a></li>
+            <li><a href="#">Week 13: Interface Design</a></li>
+            <li><a href="#">Week 14: Project Prep</a></li>
+            <li><a href="#">Final Project</a></li>
+        </ul>
+    </div>
 </body>
 </html>
