@@ -60,7 +60,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     const listItems = document.querySelectorAll('.week-list li');
     listItems.forEach((item, index) => {
         // Delay (in milliseconds) increases for each item
-        const delay = index * 50; // Adjust the multiplier to control the delay between items
+        const delay = index * 500; // Adjust the multiplier to control the delay between items
         setTimeout(() => {
             item.classList.add('fadeIn');
         }, delay);
