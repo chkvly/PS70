@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Week 2: 2D Design & Cutting</title>
+    <style>
+        body {
+            font-family: 'Consolas', monospace;
+            background-color: #f5f5dc; /* Light cream background */
+            padding: 20px;
+        }
+        h1 {
+            font-size: 24px; /* Large font size for titles */
+            font-weight: bold;
+        }
+        h2 {
+            font-weight: bold; /* Bold for subtitles */
+        }
+        p, ul, li {
+            margin: 10px 0;
+        }
+        em {
+            font-style: italic; /* Italics for emphasized text */
+        }
+        .fade-section {
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+
+<div class="fade-section">
+    <h1>Week 2: 2D Design & Cutting</h1>
+    <p>In week 2, the goal was to gain hands-on experience with Autodesk Fusion 360 and to understand the nuances of parametric design and digital cutting.</p>
+    <p>The journey wasn't without challenges! The process involved multiple prototypes to test the fit and interlocking mechanism. Each iteration brought valuable insights, leading to incremental improvements in the design. Adjusting the parameters within Fusion 360 often meant returning to the drawing board to make sure that the dimensions could be easily adjusted based on the material thickness and cutting tool tolerances.</p>
+    <p>To apply the techniques explored during week 3 of our course, I used a scroll saw to cut a mirror and fit it into the box behind my name. I ultimately landed on the design showcased below and I'm quite happy with the final product!</p>
+</div>
+
+<div class="fade-section">
+    <h1>3D Modeling Exploration: Side Table and Winston's Bowl</h1>
+    
+    <h2>Side Table Design</h2>
+    <p>In the realm of 3D modeling, I decided to design a piece of furniture that combines simplicity with modern aesthetics – a side table. Employing the pipe feature in Autodesk Fusion 360 allowed me to create the table's sleek, supportive legs, showcasing the seamless integration of form and function.</p>
+    
+    <h2>Personalized Bowl for Winston</h2>
+    <p>Winston, the cheeky neighborhood cat of East Capitol Hill, was the inspiration for my next piece – a personalized bowl. This project was an exercise in creating an object that's not only functional but also carries a personal touch.</p>
+    
+    <p><em>Designing Winston’s bowl was a lesson in the nuances of user-centric design!</em></p>
+    
+    <p>The extrude function was my main tool for shaping the initial form of the bowl. Starting with a simple sketch, I carefully extruded the base shape, paying close attention to the bowl’s depth and slope. The challenge was to create a bowl with sides that would allow easy access to food without strain on Winston’s posture. Through a series of extrusions, I shaped a bowl that gradually contoured inward, an inviting form for a sweet cat to dip its head into!</p>
+    
+    <p>With the basic shape in place, my attention shifted to refining the bowl’s rim. My primary concern was Winston’s ease of use, particularly the comfort of his chin while eating. With this in mind, I made bevels along the edges. This process involved a delicate balance—each bevel had to be smooth enough to provide comfort, yet precise to maintain the bowl’s form. I iterated several profiles, each time assessing the bevel's angle and the resulting contour. Achieving the right bevel meant observing how different chamfer sizes interacted with the bowl’s overall shape and Winston’s potential movements.</p>
+    
+    <p>The addition of fillets and chamfers further enhanced the bowl's comfort and safety features, ensuring that it's as pleasing to use as it is to the eye. The embossed name 'WINSTON' wraps around the bowl, giving it a bespoke feel that I hope is appreciated by its four-legged recipient!</p>
+</div>
+
+<script>
+window.addEventListener('DOMContentLoaded', (event) => {
+    const fadeSections = document.querySelectorAll('.fade-section');
+    fadeSections.forEach((section, index) => {
+        const delay = index * 300; // Adjust timing as needed
+        setTimeout(() => {
+            section.style.opacity = 1;
+        }, delay);
+    });
+});
+</script>
+
+</body>
+</html>
