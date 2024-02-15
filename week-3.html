@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Week 3: Hand tools and fabrication</title>
+    <style>
+        body {
+            font-family: 'Consolas', monospace;
+            background-color: #f5f5dc; /* Light cream background */
+            padding: 20px;
+        }
+        h1 {
+            font-size: 24px; /* Large font size for titles */
+            font-weight: bold;
+        }
+        h2 {
+            font-weight: bold; /* Bold for subtitles */
+        }
+        p, ul, li {
+            margin: 10px 0;
+        }
+        em {
+            font-style: italic; /* Italics for emphasized text */
+        }
+        .fade-section {
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+        }
+     img {
+    max-width: 300px; /* Ensures all images will not exceed this width */
+    height: auto;
+}
+
+    </style>
+</head>
+<body>
+
+<div class="fade-section">
+    <h1>Kinetic Sculpture</h1>
+    <h2>Concept and Design</h2>
+    <p>As a novice in the realm of digital fabrication, I embarked on this project with enthusiasm but quickly realized the complexity involved. The project required skills in fusion modeling, understanding gears and kinetics, and circuit design – areas I was eager to explore but had little experience in.</p>
+  <p>The core of my sculpture was to be a simple gear train powered by a DC motor. Early on, I realized that precision in the gear's measurements, especially the hole diameter to fit the end of the rotor, was crucial. My initial designs were modeled in Fusion 360, aiming to create a gear that would seamlessly integrate with the motor's rotor.</p>
+    <h2>Fabrication Challenges</h2>    
+  <p>Initial Attempts</p>
+  <p>My first attempt involved laser cutting a gear out of cardboard. Unfortunately, the hole was not snug enough, preventing the gear from catching onto the rotor and generating movement. This setback led me to refine my design, reducing the hole diameter for a better fit.</p>
+  <p>Iterations and Solutions</p>
+  <p>The second gear exhibited a temporary success; however, after about 20 seconds of spinning, the soft cardboard material gave way, enlarging the hole once again. Attempts to stabilize the fit with tape and a small rubber band were unsuccessful.</p>
+  <p>In pursuit of a more durable solution, I printed a gear with a smaller hole diameter (3mmx4mm) and modified the cardboard base to allow the rotor to protrude more, enhancing the gear's stability during rotation. This adjustment, alongside a structure crafted with a boxcutter and hot glue for additional support, proved to be the turning point.</p>
+
+  <h2>Circuit Design</h2>
+  <p>To bring motion to my kinetic sculpture, I utilized an L9110 motor driver module in conjunction with an Arduino Uno. This setup allowed me to precisely control the speed and direction of the motor.</p>
+  <p>The motor's operation was controlled through two digital pins on the Arduino Uno, allowing for simple yet effective manipulation of the motor's state (on/off) and direction by changing the voltage applied to the motor's terminals.</p>
+
+  <h2>Wiring</h2>
+  <p>•	Motor to L9110: The motor's leads were connected to the output terminals of the L9110 module.
+•	L9110 to Arduino: The control inputs of the L9110 (A-1A and A-1B) were connected to digital pins 3 and 4 on the Arduino Uno, respectively.
+•	Power Supply: The Arduino Uno and the L9110 were powered using the Arduino's 5V output, ensuring that the motor operated within safe voltage levels.</p>
+
+  <h2>Arduino Code</h2>
+  <p>Utilizing the code from class, the Arduino sketch provided below was used to control the motor. The code initializes two digital pins (3 and 4) as outputs to interface with the L9110 driver. By toggling these pins, the motor can be started, stopped, or reversed, enabling dynamic movement in the sculpture.</p>
+
+  <h2>Final Design</h2>
+  <p>The final iteration of the gear, with its precise dimensions and reinforced structure, achieved a secure and lasting fit with the rotor. This success marked the culmination of multiple iterations, each contributing to my understanding and skills in digital fabrication. The completed sculpture is a testament to the iterative process of learning and improvement and, despite initial challenges, the project was highly satisfying!</p>
+  
+
+
+<img src="https://raw.githubusercontent.com/chkvly/PS70/main/box%201.png" alt="">
+    <img src="https://raw.githubusercontent.com/chkvly/PS70/main/images/box%204.jpg" alt="">
+<img src="https://raw.githubusercontent.com/chkvly/PS70/main/images/box%205.jpg" alt="">
+
+
+</div>
+
+<script>
+window.addEventListener('DOMContentLoaded', (event) => {
+    const fadeSections = document.querySelectorAll('.fade-section');
+    fadeSections.forEach((section, index) => {
+        const delay = index * 300; // Adjust timing as needed
+        setTimeout(() => {
+            section.style.opacity = 1;
+        }, delay);
+    });
+});
+</script>
+
+</body>
+</html>
