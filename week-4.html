@@ -62,7 +62,7 @@
 <h2>Code</h2>
 <p>•	analogRead(potPin): Reads the analog voltage (0-5V) from the potentiometer, producing a 10-bit value (0-1023).</p>
 <p>•	map(potValue, 0, 1023, 0, 255): This translates the 10-bit potentiometer value into an 8-bit value that the PWM output can utilize. The mapping is linear, where turning the potentiometer increases or decreases the voltage linearly, thus providing a smooth transition of speed control.</p>
-<p>•	analogWrite(A1A, motorSpeed): Sends the PWM signal to the motor driver, where the duty cycle reflects the potentiometer's position, effectively controlling the motor speed.</p>
+<p>•	analogWrite(A1A, motorSpeed): Sends the PWM signal to the motor driver, where the "duty cycle" reflects the potentiometer's position, effectively controlling the motor speed.</p>
 <p>•	delay(10): A short delay to ensure the stability of the system, preventing it from reacting to noise or rapid, unintended changes.</p>
   <img src="https://raw.githubusercontent.com/chkvly/PS70/main/images/arduino%20code_week%204.png" alt="">
 
