@@ -1,1 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Week 4: Microcontroller Programming</title>
+    <style>
+        body {
+            font-family: 'Consolas', monospace;
+            background-color: #f5f5dc; /* Light cream background */
+            padding: 20px;
+        }
+        h1 {
+            font-size: 24px; /* Large font size for titles */
+            font-weight: bold;
+        }
+        h2 {
+            font-weight: bold; /* Bold for subtitles */
+        }
+        p, ul, li {
+            margin: 10px 0;
+        }
+        em {
+            font-style: italic; /* Italics for emphasized text */
+        }
+        .fade-section {
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+        }
+     img {
+    max-width: 300px; /* Ensures all images will not exceed this width */
+    height: auto;
+}
 
+    </style>
+</head>
+<body>
+
+<div class="fade-section">
+    <h1>Programming an Arduino board - Real-time Motor Speed Control with Arduino and L9110</h1>
+    <h2>Materials and Components</h2>
+<p>Using the below, the objective was to create a system that allows for the real-time adjustment of a motor's speed. This necessitated the use of a potentiometer as an analog input and translating its readings into a pulse-width modulated (PWM) output to control the motor driver.</p>
+ <p>•	Arduino Uno: central microcontroller unit</p>
+ <p>•	L9110 Motor Driver: This module controls the motor's speed and direction</p>
+ <p>•	Potentiometer: an analog device used to provide variable voltage to the Arduino (10k ohm)</p>
+ <p>•	Breadboard: esed for making an easy and solderless prototype of the circuit</p>
+ <p>•	Jumper Wires: wires that connect the components together, facilitating communication and power transfer</p>
+ <p>•	Motor (compatible with the L9110 driver): final output device which is controlled by the L9110 driver via the Arduino</p>
+
+<h2>Circuit Assembly</h2>
+<p>Initially, the direct connection of the Arduino to the L9110 driver with a minimalistic setup seemed straightforward. However, the simplicity was deceptive, as the motor refused to stir.</p> 
+<p>The initial failure of the motor to respond led to a series of troubleshooting steps:</p>
+<p>•	Verifying the motor driver and motor functionality independently.</p>
+<p>•	Inspecting connections for potential shorts or breaks.</p>
+<p>•	Researching common pitfalls in similar setups.</p>
+<p>Thanks to Bobby's insight during open lab, it became clear that the potentiometer required a stable configuration that the breadboard facilitated through its organized rows and connection points. As such, I incorporated the breadboard and rerouted the wiring. The potentiometer's terminals received a dedicated space on the breadboard, and jumper wires formed structured pathways to the L9110. This orderly setup highlighted the importance of clean and precise connections in electronic projects.</p>
+   <img src="https://raw.githubusercontent.com/chkvly/PS70/main/images/program2.jpg" alt="">
+    <img src="https://raw.githubusercontent.com/chkvly/PS70/main/images/program1.jpg" alt="">
+
+<h2>Simplified Conceptual Diagram</h2>
+    <img src="https://raw.githubusercontent.com/chkvly/PS70/main/images/a697c516-f316-438d-a2de-d1c0bfa7b9a2.jpeg" alt="">
+
+<h2>Code</h2>
+<p>•	analogRead(potPin): Reads the analog voltage (0-5V) from the potentiometer, producing a 10-bit value (0-1023).</p>
+<p>•	map(potValue, 0, 1023, 0, 255): This translates the 10-bit potentiometer value into an 8-bit value that the PWM output can utilize. The mapping is linear, where turning the potentiometer increases or decreases the voltage linearly, thus providing a smooth transition of speed control.</p>
+<p>•	analogWrite(A1A, motorSpeed): Sends the PWM signal to the motor driver, where the duty cycle reflects the potentiometer's position, effectively controlling the motor speed.</p>
+<p>•	delay(10): A short delay to ensure the stability of the system, preventing it from reacting to noise or rapid, unintended changes.</p>
+  <img src="https://raw.githubusercontent.com/chkvly/PS70/main/images/arduino%20code_week%204.png" alt="">
+
+<h2>Final Product</h2>
+
+<img src="https://raw.githubusercontent.com/chkvly/PS70/main/images/program3.jpg" alt="">
+    
+<iframe width="560" height="315" src="https://www.youtube.com/embed/zULkmDjngtU?si=RydTRTanPdPRPEsF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    
+</div>
+
+<script>
+window.addEventListener('DOMContentLoaded', (event) => {
+    const fadeSections = document.querySelectorAll('.fade-section');
+    fadeSections.forEach((section, index) => {
+        const delay = index * 300; // Adjust timing as needed
+        setTimeout(() => {
+            section.style.opacity = 1;
+        }, delay);
+    });
+});
+</script>
+
+</body>
+</html>
