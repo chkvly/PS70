@@ -79,6 +79,38 @@
     <p>This system not only maximizes the utilization of seating but also enhances the fan experience by offering spontaneous seat upgrades. It would be collaborative through fan interaction and experimental through real-time feedback and iteration.</p>
 </div>
 
+ <div class="fade-section">
+    <p><strong>Key components and interactions</strong></p>
+<p>•	QR Code Tags: Placed on each seat for identification and interaction with the user's smartphone.</p>
+<p>•	User Smartphones: Devices used by attendees to scan QR codes and interact with the system.</p>
+<p>•	SIM7600 Microcontrollers: Integrated with LTE capabilities, these microcontrollers handle real-time data communication with the central server.</p>
+<p>•	Central Server: Manages the database of seat availability and processes incoming data from the SIM7600 microcontrollers.</p>
+<p>•	Notification System: Utilizes the server and SIM7600 modules to send out SMS or app notifications to registered users about seat availability.</p>
+<p>•	Bidding Interface: Part of the mobile app or website where users can view available seats and place bids.</p>
+<p>•	Digital Pass System: Generates QR codes for users who successfully bid for a seat, granting them access.</p>
+</div>
+
+    
+    <div class="fade-section">
+    <p><strong>Potential hardware schematic for the real-time seat bidding mechanism</strong></p>
+        <p>•	Arduino (Controller): Acts as the central controller, potentially for local processing and interfacing with other devices.</p>
+        <p>•	SIM7600 (LTE Module): Handles real-time data communication with the central server using LTE capabilities.</p>
+        <p>•	Central Server: Manages the database of seat availability and processes incoming data from the SIM7600 modules.</p>
+        <p>•	User Smartphone: Represents the devices attendees use to interact with the system, such as scanning QR codes.</p>
+        <p>•	QR Code Tag: Placed on each seat for identification, which can be scanned by user smartphones.</p>
+        <p>•	The SIM7600 module communicates data directly to the central server.</p>
+           <p>•	 The Arduino controls the SIM7600 module.</p>
+<p>•	User smartphones can scan QR code tags, depicted by the dotted blue line.</p>
+<p>•	A conceptual green dashed line represents the flow of information from the QR code tags to the server, which is likely to be through the user's smartphone and then over a network to the server.</p>
+
+
+
+
+
+
+
+</div>
+
 <script>
 window.addEventListener('DOMContentLoaded', (event) => {
     const fadeSections = document.querySelectorAll('.fade-section');
