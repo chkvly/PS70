@@ -1,1 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Week 5: 3D Design & Printing</title>
+    <style>
+        body {
+            font-family: 'Consolas', monospace;
+            background-color: #f5f5dc; /* Light cream background */
+            padding: 20px;
+        }
+        h1 {
+            font-size: 24px; /* Large font size for titles */
+            font-weight: bold;
+        }
+        h2 {
+            font-weight: bold; /* Bold for subtitles */
+        }
+        p, ul, li {
+            margin: 10px 0;
+        }
+        em {
+            font-style: italic; /* Italics for emphasized text */
+        }
+        .fade-section {
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+        }
+     img {
+    max-width: 300px; /* Ensures all images will not exceed this width */
+    height: auto;
+}
+
+    </style>
+</head>
+<body>
+
+<div class="fade-section">
+    <h1>Custom 3D-Printed Phone Stand Project</h1>
+    <h2>Design Inspiration</h2>
+<p>My goal was to design a practical yet aesthetically pleasing phone stand. The stand should not only to provide stability and support for a smartphone but also to ensure ease of interaction, whether it be for video calling, media consumption, or as a desk accessory that complements the modern workspace.</p>
+
+<h2>Conceptualization and Modeling</h2>
+<p>Using CAD software, the phone stand was conceptualized with user ergonomics in mind. The design features a minimalist curve, catering to the form factor of contemporary smartphones while ensuring a robust base for stability. The process involved iterative modifications to achieve the perfect balance between form and function.</p>
+
+  <iframe src="https://myhks6.autodesk360.com/shares/public/SHd38bfQT1fb47330c99cca963ec0c032c0a?mode=embed" width="640" height="480" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"  frameborder="0"></iframe>
+
+  <a download href='https://github.com/chkvly/PS70/blob/main/images/phone%20stand_1%20v0.stl'>Download my STL file <\a>
+      <a download href='https://github.com/chkvly/PS70/blob/main/images/phone%20stand_1%20v1.dxf'>Download my DXF file <\a>
+      <a download href='https://raw.githubusercontent.com/chkvly/PS70/main/images/Body2_0.3mm_PLA_MK3S_2h8m.gcode'>Download my sliced gcode file <\a>
+
+  <h2>3D Printing Process - Equipment and Materials</h2>
+<p>•	Printer: Original Prusa i3 MK3S (the print commenced with a heated bed to ensure optimal adhesion and a controlled print environment to mitigate warping)</p>
+<p>•	Material: PLA (given its low shrinkage properties)</p>
+<p>•	Layer Height: 0.2 mm</p>
+<p>•	Infill: 20%</p>
+    <img src="https://raw.githubusercontent.com/chkvly/PS70/main/images/phone%20stand1.jpg" alt="">
+
+  
+<h2>Final Product</h2>
+<p>The completion of the 2-hour and 9-minute print culminated in a phone stand that was both functional and aesthetically pleasing!</p>
+    <img src="https://github.com/chkvly/PS70/blob/main/images/phone%20stand2.jpg?raw=true" alt="">
+    
+</div>
+
+<script>
+window.addEventListener('DOMContentLoaded', (event) => {
+    const fadeSections = document.querySelectorAll('.fade-section');
+    fadeSections.forEach((section, index) => {
+        const delay = index * 300; // Adjust timing as needed
+        setTimeout(() => {
+            section.style.opacity = 1;
+        }, delay);
+    });
+});
+</script>
+
+</body>
+</html>
 
