@@ -41,17 +41,17 @@
 <p>The goal was to create a capacitive sensor that can detect touch. When the foil touchpad is touched, an LED light is programmed to turn on.</p>
 
 <h2>Method</h2>
-<p>Using an ELEGOO Uno R3, I constructed a capacitive sensor with a simple foil touchpad. The sensor was connected to the microcontroller, which was set up to light up an LED upon sensing touch.</p>
+<p>Using an ELEGOO Uno R3, I constructed a capacitive sensor with a simple foil touchpad. This conductive material, inexpensive and easily available, proved to be an excellent surface for detecting capacitive changes caused by a human finger. The foil's sizable surface area ensured that even light touches could be registered effectively. The sensor was connected to the microcontroller, which was set up to light up an LED upon sensing touch.</p>
 
 <h2>Implementation</h2>
-<p>To avoid the delay() function, I utilized timers to continuously check the state of the capacitive sensor. When a touch was detected, the timer would trigger the LED to light up.</p>
-<img src="https://github.com/chkvly/PS70/blob/main/images/sensor%201.jpg?raw=true" alt="">
+<p>To avoid the delay() function, I utilized timers to continuously check the state of the capacitive sensor. When a touch was detected, the timer would trigger the LED to light up. I used the 'CapacitiveSensor' library to convert the microcontroller's digital pin into a capacitive sensor. This library facilitated the detection of the subtle changes in the electromagnetic field around the foil.</p>
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/OOQH9P8Ocfg?si=_b_fJ8zZZvk1etzA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 <h2>Code</h2>
     <img src="https://github.com/chkvly/PS70/blob/main/images/code1.jpg?raw=true" alt="">
 
 <h2>Serial Plotter Analysis of Capacitive Foil Sensor</h2>
+    <p>I used the Arduino IDE's serial plotter to visualize the capacitive sensor's output in real-time.</p>
     <img src="https://github.com/chkvly/PS70/blob/main/images/plto%201.jpg?raw=true" alt="">
 
     <p>•	Data Range: The values seem to fluctuate between approximately 100 and 250.</p>
