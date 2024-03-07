@@ -45,31 +45,38 @@
 
 <h2>Implementation</h2>
 <p>To avoid the delay() function, I utilized timers to continuously check the state of the capacitive sensor. When a touch was detected, the timer would trigger the LED to light up.</p>
+<img src="https://github.com/chkvly/PS70/blob/main/images/sensor%201.jpg?raw=true" alt="">
 
-  
+<iframe width="560" height="315" src="https://www.youtube.com/embed/OOQH9P8Ocfg?si=_b_fJ8zZZvk1etzA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<h2>Code</h2>
+    <img src="https://github.com/chkvly/PS70/blob/main/images/code1.jpg?raw=true" alt="">
 
-<p>I began with the spline tool in Fusion 360, which allows for the creation of complex and smooth curves based on control points. This tool was instrumental in outlining the initial contours of the phone stand. The ability to adjust the tension and curvature through these points provided the freedom to experiment with different shapes, ensuring that the stand's cradle would be suited for an iPhone’s dimensions.</p>
-<p>The extrude function was used iteratively to transform the two-dimensional spline sketches into a three-dimensional object. This was a trial-and-error process, as each extrusion helped to reveal aspects of the design that needed refinement. Adjustments were periodically made to the depth and angles of the extrusion. To further refine the design, I used tapered angles to create smooth edges that provide more elegance to the stand without introducing risk of slipping.</p>
+<h2>Serial Plotter Analysis of Capacitive Foil Sensor</h2>
+    <img src="https://github.com/chkvly/PS70/blob/main/images/plto%201.jpg?raw=true" alt="">
+
+    <p>•	Data Range: The values seem to fluctuate between approximately 100 and 250.</p>
+<p>•	Pattern: The plot shows a somewhat erratic pattern, indicating that the sensor is picking up a variety of capacitance changes. These could correspond to different touch intensities, duration, or possibly environmental factors affecting the sensor.</p>
+<p>•	Frequency: There are frequent peaks and troughs, suggesting a responsive sensor to continuous or regular interaction.</p>
     
-  <iframe src="https://myhks6.autodesk360.com/shares/public/SHd38bfQT1fb47330c99cca963ec0c032c0a?mode=embed" width="640" height="480" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"  frameborder="0"></iframe>
+    <img src="https://github.com/chkvly/PS70/blob/main/images/plto2.jpg?raw=true" alt="">
 
-  <p>•	<a download href='https://github.com/chkvly/PS70/blob/main/images/phone%20stand_1%20v0.stl'>Download my STL file</a></p>
-  <p>•	<a download href='https://github.com/chkvly/PS70/blob/main/images/phone%20stand_1%20v1.dxf'>Download my DXF file </a></p>
-  <p>•	<a download href='https://raw.githubusercontent.com/chkvly/PS70/main/images/Body2_0.3mm_PLA_MK3S_2h8m.gcode'>Download my sliced gcode file </a></p>
+<p>•	Data Range: The values exhibit a wider range, dipping below 0 and peaking around 1,200.</p>
+<p>•	Pattern: The plot demonstrates a pattern of sharp spikes at regular intervals, followed by quick returns to the baseline. This could indicate a designed interaction, like a deliberate touch or tap.</p>
+<p>•	Frequency: The consistent pattern of high peaks suggests a controlled test of the sensor, perhaps simulating a user engaging with the sensor at regular intervals.</p>
+   
+    
+<h2>Part 2: Photoresistor</h2>
+<p>For the second part of the assignment, I made a photoresistor to control the same LED. Specifically, the LED turns off when a certain brightness level is detected.</p>
+<img src="https://github.com/chkvly/PS70/blob/main/images/sensor%202.jpg?raw=true" alt="">
 
-  <h2>3D Printing Process - Equipment and Materials</h2>
-<p>•	Printer: Original Prusa i3 MK3S (the print commenced with a heated bed to ensure optimal adhesion and a controlled print environment to mitigate warping)</p>
-<p>•	Material: PLA (given its low shrinkage properties)</p>
-<p>•	Layer Height: 0.2 mm</p>
-<p>•	Infill: 20%</p>
-          
-<img src="https://raw.githubusercontent.com/chkvly/PS70/main/images/phone%20stand1.jpg" alt="">
+    
+<h2>Calibration</h2>
+<p>To observe the relationship between the signals recorded by the microcontroller and the physical quantities being measured, I calibrated the photoresistor using an iPhone flashlight with four brightness settings and found that the LED turns off at the third brightness setting.</p>
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/9MuYrpacPuY?si=mBEEvWbxOajeq4eR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
   
-<h2>Final Product</h2>
-<p>The completion of the 2-hour and 9-minute print culminated in a phone stand that was both functional and aesthetically pleasing!</p>
-          
-    <img src="https://github.com/chkvly/PS70/blob/main/images/phone%20stand2.jpg?raw=true" alt="">
+<h2>Code</h2>
+    <img src="https://github.com/chkvly/PS70/blob/main/images/code2.jpg?raw=true" alt="">
     
 </div>
 
