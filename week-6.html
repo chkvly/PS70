@@ -38,10 +38,9 @@
 <div class="fade-section">
     <h1>Capacitive Sensing and Photoresistance</h1>
     <h2>Part 1: Capacitive Sensor with Foil Touchpad</h2>
-<p>The goal was to create a capacitive sensor that can detect touch. When the foil touchpad is touched, an LED light is programmed to turn on.</p>
-
-<h2>Method</h2>
+    
 <p>Using an ELEGOO Uno R3, I constructed a capacitive sensor with a simple foil touchpad. This conductive material, inexpensive and easily available, proved to be an excellent surface for detecting capacitive changes caused by a human finger. The foil's sizable surface area ensured that even light touches could be registered effectively. The sensor was connected to the microcontroller, which was set up to light up an LED upon sensing touch.</p>
+    <img src="https://github.com/chkvly/PS70/blob/main/images/sensor%201.jpg?raw=true" alt="">
 
 <h2>Implementation</h2>
 <p>To avoid the delay() function, I utilized timers to continuously check the state of the capacitive sensor. When a touch was detected, the timer would trigger the LED to light up. I used the 'CapacitiveSensor' library to convert the microcontroller's digital pin into a capacitive sensor. This library facilitated the detection of the subtle changes in the electromagnetic field around the foil.</p>
@@ -67,7 +66,11 @@
     
 <h2>Part 2: Photoresistor</h2>
 <p>For the second part of the assignment, I made a photoresistor to control the same LED. Specifically, the LED turns off when a certain brightness level is detected.</p>
-<img src="https://github.com/chkvly/PS70/blob/main/images/sensor%202.jpg?raw=true" alt="">
+
+    <h2>Implementation</h2>
+    <p>A photoresistor was incorporated into the existing circuit on the breadboard. This component changes its resistance based on the intensity of light falling upon it. The lower the light level, the higher the resistance; conversely, bright light yields lower resistance.</p>
+<p>Specifically, the photoresistor was placed in series with a fixed resistor. This arrangement allowed the Arduino to measure the voltage at the junction between the resistors, which became an indicator of the light intensity.</p>
+    <img src="https://github.com/chkvly/PS70/blob/main/images/sensor%202.jpg?raw=true" alt="">
 
     
 <h2>Calibration</h2>
