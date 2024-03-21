@@ -1,1 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Final Project: MVP Mapping</title>
+    <style>
+        body {
+            font-family: 'Consolas', monospace;
+            background-color: #f5f5dc; /* Light cream background */
+            padding: 20px;
+        }
+        h1 {
+            font-size: 24px; /* Large font size for titles */
+            font-weight: bold;
+        }
+        h2 {
+            font-weight: bold; /* Bold for subtitles */
+        }
+        p, ul, li {
+            margin: 10px 0;
+        }
+        em {
+            font-style: italic; /* Italics for emphasized text */
+        }
+        .fade-section {
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+        }
+     img {
+    max-width: 300px; /* Ensures all images will not exceed this width */
+    height: auto;
+}
 
+    </style>
+</head>
+<body>
+
+<div class="fade-section">
+    <h2>Note on Project Scope and Timeline</h2>
+    
+<p>As my thesis for the Kenned School is due on April 2, I have made the decision to focus on a comprehensive project mapping and proposal rather than constructing an MVP at this stage. Upon completion of my thesis, my full attention will shift to this project. I will then proceed with the physical realization of the MVP, applying the principles and techniques outlined in the proposal and incorporating the insights gained from the networking tutorial. This phased approach ensures that both my thesis and the course project receive the dedication and effort they merit, hopefully leading to high-quality outcomes in both endeavors!</p>
+
+<h1>System Overview</h1>  
+<h2>Hardware Components</h2>
+  <p>• Microcontroller: An ESP32 microcontroller will be used for its WiFi capabilities, enabling it to connect to the internet and communicate with a serverless database. It will also manage the seat detection sensors.</p>
+  <p>• Seat Detection Sensors: A combination of resistor sensing and capacitive sensors will be used to detect the presence or absence of a person in a seat. The choice between the two will be made based on a comparison of their sensitivity, power consumption, and ease of integration.</p>
+  <p>• Indicator LED: Each seat will have an LED indicator to provide a visual cue of its status (e.g., green for available, red for occupied.</p>
+
+<h2>Software Components</h2>
+<p>• Serverless Database (Firebase): Google's Firebase will serve as the backend, storing real-time data on seat status (available, filled, pending). This choice is motivated by Firebase's scalability, ease of setup, and real-time data synchronization features.</p>
+<p>• Front-End Webpage: A dedicated webpage will serve as the user interface, displaying available seats in real-time. The page will be designed with responsiveness in mind, ensuring accessibility across various devices and screen sizes.</p>
+<p>• QR Code Generation: To facilitate user interaction, each seat will be associated with a QR code. Upon leaving a seat, users can scan the QR code, which prompts them to confirm if they wish to make the seat available. This feature will be implemented using a QR code generating API.</p>
+
+  <h1>Implementation Plan</h1>  
+<p>1.	Hardware Setup: Assemble the microcontroller and sensors for a prototype seat. Develop the circuitry for seat detection and the LED indicator.</p>
+<p>2.	Software Development:</p>
+<p>• Set up the Firebase database, defining the structure to store seat statuses.</p>
+<p>• Develop the code for the ESP32 to read sensor data and communicate with Firebase, updating the seat status accordingly.</p>
+<p>• Design and implement the front-end webpage, ensuring it dynamically displays seat availability based on the database.</p>
+<p>• Integrate QR code generation, linking each seat to a unique code that users can interact with.</p>
+
+  <h1>Testing and Validation</h1>  
+<p>• Prototype Testing: Test the functionality of the prototype seat with the microcontroller and sensors, ensuring accurate detection of seat occupancy.</p>
+<p>• System Integration Test: Validate the seamless operation of the entire system, from hardware sensing and data transmission to real-time display on the webpage.</p>
+<p>• User Feedback: Conduct a pilot run in a controlled environment, gathering user feedback on the system's usability and effectiveness.</p>
+
+    
+</div>
+
+<script>
+window.addEventListener('DOMContentLoaded', (event) => {
+    const fadeSections = document.querySelectorAll('.fade-section');
+    fadeSections.forEach((section, index) => {
+        const delay = index * 300; // Adjust timing as needed
+        setTimeout(() => {
+            section.style.opacity = 1;
+        }, delay);
+    });
+});
+</script>
+
+</body>
+</html>
