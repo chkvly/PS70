@@ -1,1 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Week 6: Electronic Input Devices</title>
+    <style>
+        body {
+            font-family: 'Consolas', monospace;
+            background-color: #f5f5dc; /* Light cream background */
+            padding: 20px;
+        }
+        h1 {
+            font-size: 24px; /* Large font size for titles */
+            font-weight: bold;
+        }
+        h2 {
+            font-weight: bold; /* Bold for subtitles */
+        }
+        p, ul, li {
+            margin: 10px 0;
+        }
+        em {
+            font-style: italic; /* Italics for emphasized text */
+        }
+        .fade-section {
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+        }
+     img {
+    max-width: 300px; /* Ensures all images will not exceed this width */
+    height: auto;
+}
 
+    </style>
+</head>
+<body>
+
+<div class="fade-section">
+    <h1>Network-Connected Microcontroller for WhatsApp Messaging</h1>
+    <h2>Project Overview</h2>
+    
+<p>In this project, we used a microcontroller to send text messages over the internet. Specifically, by following a guide from Random Nerd Tutorials, we programmed an ESP32 to connect to the internet and send messages via WhatsApp. We then expanded the functionality by integrating a physical button input. Pressing this button triggers the ESP32 to send a predefined text message to a specified phone number.</p>
+  
+
+<h2>Objectives</h2>
+    <p>• To program an ESP32 microcontroller to connect to the internet.</p>
+    <p>• To send WhatsApp messages automatically upon receiving a digital input signal from a button.</p>
+    <p>• To understand and resolve connectivity issues with the microcontroller and implement debounce logic for reliable button interaction.</p>
+
+<h2>Materials and Components</h2>
+    <p>• ESP32 microcontroller</p>
+    <p>• Momentary push button</p>
+    <p>• Breadboard and jumper wires</p>
+
+  <h2>Code</h2>
+<p>Thanks to Finn's ingenuity, the code snippet below is the final iteration that allowed successful messaging through WhatsApp. The button logic is implemented with a debounce mechanism, which ensures the ESP32 doesn't send multiple messages due to the mechanical nature of the button press.</p>
+    <img src="https://github.com/chkvly/PS70/blob/main/images/whatsapp%20code.jpg?raw=true" alt="">
+
+<h2>Method</h2>
+    <p>• Initial Setup: Followed the tutorial to set up ESP32 with the Arduino IDE.</p>
+    <p>• Networking: Configured ESP32 to connect to the internet via Wi-Fi.</p>
+    <p>• API Integration: Utilized the callmebot API to send messages through WhatsApp.</p>
+      <p>• Input Mechanism: Added a button that, when pressed, triggers the message sending function.</p>
+      <p>• Debouncing: Added a "debounce" feature  in the code to account for the mechanical bounce of the button press.</p>
+   
+  <img src="https://github.com/chkvly/PS70/blob/main/images/wiring.jpg?raw=true" alt="">
+    <img src="https://github.com/chkvly/PS70/blob/main/images/whatsapp.jpg?raw=true" alt="">
+
+  <h2>Challenges and Troubleshooting</h2>
+      <p>• Encountered an xrun error while connecting the ESP32 to Arduino. Resolved by troubleshooting the connection, which included checking the USB cable, selecting the correct port and board in the Arduino IDE, and ensuring proper driver installation.</p>
+    <p>• Calibrated the debounce delay to avoid multiple messages being sent with a single button press.</p>
+
+</div>
+
+<script>
+window.addEventListener('DOMContentLoaded', (event) => {
+    const fadeSections = document.querySelectorAll('.fade-section');
+    fadeSections.forEach((section, index) => {
+        const delay = index * 300; // Adjust timing as needed
+        setTimeout(() => {
+            section.style.opacity = 1;
+        }, delay);
+    });
+});
+</script>
+
+</body>
+</html>
