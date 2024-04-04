@@ -59,7 +59,7 @@
 <h2>Method</h2>
     <p>• Initial Setup: Followed the tutorial to set up ESP32 with the Arduino IDE.</p>
     <p>• Networking: Configured ESP32 to connect to the internet via Wi-Fi.</p>
-    <p>• API Integration: Utilized the callmebot API to send messages through WhatsApp.</p>
+    <p>• API Integration: Utilized the callmebot API to send messages through WhatsApp. Key insight: The API itself doesn't send the message directly from your microcontroller. Instead, the microcontroller sends an HTTP request to the CallMeBot API, providing the necessary information such as the message content, recipient phone number, and API key.</p>
       <p>• Input Mechanism: Added a button that, when pressed, triggers the message sending function.</p>
       <p>• Debouncing: Added a "debounce" feature  in the code to account for the mechanical bounce of the button press.</p>
    
@@ -68,7 +68,7 @@
 
   <h2>Challenges and Troubleshooting</h2>
       <p>• Encountered an xrun error while connecting the ESP32 to Arduino. Resolved by troubleshooting the connection, which included checking the USB cable, selecting the correct port and board in the Arduino IDE, and ensuring proper driver installation.</p>
-    <p>• Calibrated the debounce delay to avoid multiple messages being sent with a single button press.</p>
+    <p>• Calibrated the debounce delay to avoid multiple messages being sent with a single button press. As Finn noted, debouncing is important to make up the difference between your intended single button press and the electronic implementation, where it is likely to read high many times during and after your button press. You can debounce either through delay() or using millis(), as we did in the final code.</p>
 
 </div>
 
