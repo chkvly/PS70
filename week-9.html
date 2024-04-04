@@ -54,8 +54,80 @@
 
   <h2>Code</h2>
 <p>Thanks to Finn's ingenuity, the code snippet below is the final iteration that allowed successful messaging through WhatsApp. The button logic is implemented with a debounce mechanism, which ensures the ESP32 doesn't send multiple messages due to the mechanical nature of the button press.</p>
-    <img src="https://github.com/chkvly/PS70/blob/main/images/whatsapp%20code.jpg?raw=true" alt="">
 
+<p class="margin">   </p>
+<div style = "width:100%">
+  <h4>Button Code</h4>
+  <div style = "background-color: #d3d3d3; height: 50vh; overflow: scroll;">
+  <pre><code>
+
+#include WiFi.h
+#include HTTPClient.h
+#include UrlEncode.h
+
+const char* ssid = "---------";
+const char* password = "---------;
+const int buttonPin = 27;
+String phoneNumber = "-----------";
+String apiKey = "--------";
+
+bool buttonPressed = false;
+unsigned long lastButtonPressTime = 0;
+const unsigned long debounceDelay = 50; // Debounce delay in milliseconds
+
+void sendMessage(String message) {
+    // Data to send with HTTP POST
+    String url = "https://api.callmebot.com/whatsapp.php?phone=" + phoneNumber + "&apikey=" + apiKey + "&text=" + urlEncode(message);
+    HTTPClient http;
+    http.begin(url);
+    http.addHeader("Content-Type", "application/x-www-form-urlencoded");
+    int httpResponseCode = http.POST(url);
+
+    if (httpResponseCode == 200) {
+        Serial.println("Message sent successfully");
+    } else {
+        Serial.println("Error sending the message");
+        Serial.print("HTTP response code: ");
+        Serial.println(httpResponseCode);
+    }
+
+    http.end();
+}
+
+void setup() {
+    pinMode(buttonPin, INPUT_PULLUP);
+    Serial.begin(115200);
+    WiFi.begin(ssid, password);
+    Serial.println("Connecting");
+    while (WiFi.status() != WL_CONNECTED) {
+        delay(500);
+        Serial.print(".");
+    }
+    Serial.println("");
+    Serial.print("Connected to WiFi network with IP Address: ");
+    Serial.println(WiFi.localIP());
+}
+
+void loop() {
+    bool currentButtonState = digitalRead(buttonPin) == LOW;
+
+    if (currentButtonState != buttonPressed) {
+        lastButtonPressTime = millis();
+    }
+
+    buttonPressed = currentButtonState;
+
+    if (buttonPressed && (millis() - lastButtonPressTime > debounceDelay)) {
+        sendMessage("Hello, Finn");
+        while (digitalRead(buttonPin) == LOW) {
+            delay(50); // Wait until the button is released
+        }
+    }
+}
+  </code></pre>
+  </div>
+</div>
+    
 <h2>Method</h2>
     <p>• Initial Setup: Followed the tutorial to set up ESP32 with the Arduino IDE.</p>
     <p>• Networking: Configured ESP32 to connect to the internet via Wi-Fi.</p>
