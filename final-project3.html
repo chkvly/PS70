@@ -1,1 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Real-Time Seat Bidding System</title>
+    <style>
+        body {
+            font-family: 'Consolas', monospace;
+            background-color: #f5f5dc;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        h2 {
+            font-weight: bold;
+        }
+        p, ul, li {
+            margin: 10px 0;
+        }
+        em {
+            font-style: italic;
+        }
+        .fade-section {
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+        }
+        img {
+            max-width: 300px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="fade-section">
+        <h1>Real-Time Seat Bidding System</h1>
+        <h2>Introduction</h2>
+        <p>I developed a real-time seat bidding system that allows users to bid on available seats at a venue using their mobile devices. The project combines hardware components, such as an ESP32 C3 Dev Kit, OLED screen, push button, and photoresistor, with a user-friendly front-end webpage designed to resemble a mobile app on an iPhone. In addition, the system uses Firebase to store and synchronize real-time data on seat status, ensuring that all bids and seat availability updates are processed instantly to provide a seamless and dynamic user experience.</p>
+        
+        <h2>How It Works</h2>
+        <ol>
+            <li>A photoresistor is used to determine whether someone is sitting in a seat. When the photoresistor value falls below 800, it indicates that the seat is occupied. As soon as someone gets up from the seat and the photoresistor value rises above 800, the user is prompted via the OLED screen to make their seat available for bidding.</li>
+            <li>The front-end webpage is designed as a mock-up of a real-time bidding mobile app on an iPhone, providing a user-friendly interface for the bidding process.</li>
+            <li>If the user chooses to make their seat available for bidding, they press a button, which changes the seat status from "occupied" to "available for bidding." Firebase is used for storing and synchronizing real-time data on seat status.</li>
+            <li>When a user seeking to bid clicks on an available seat, a confirmation modal appears.</li>
+            <li>If the user confirms their intention to bid, the bid modal is displayed, allowing them to enter a bid amount. A 10-second timer is shown, indicating the time remaining to place a bid.</li>
+            <li>If the user enters a bid amount greater than $0, the bidding process begins, and a 15-second bidding timer is displayed. During this time, simulated bids are generated to create a competitive bidding environment.</li>
+            <li>After the bidding timer expires, the highest bid is confirmed, and the seat status is updated accordingly. The JavaScript code includes functions for displaying notifications to the user, such as when they have been outbid or when the bidding results are available.</li>
+            <li>If the user wins the bid, a pop-up screen appears within the iPhone mockup, congratulating them on upgrading their seat. The user is instructed to show a QR code to a staff member to access their new seat. Scanning the QR code plays "Bullet with Butterfly Wings" by the Smashing Pumpkins.</li>
+            <li>If the user is outbid, a pop-up screen informs them that they were not the highest bidder and provides the winning bid amount. The user is encouraged to scan a QR code to be notified when additional seats become available for bidding. Scanning this QR code plays George Costanza's answering machine message.</li>
+        </ol>
+        
+        <h2>Technical Challenges and Solutions</h2>
+        <h3>ESP32 Connectivity</h3>
+        <p>Connectivity issues were experienced with different ESP32 models, including the ESP32 XIAO, WROOM, and C3 Dev Kit. These issues manifested as status 2 errors and port errors, indicating communication problems between the microcontroller and the development environment.</p>
+        <p>Resolving these connectivity issues required persistence and a trial-and-error approach. Various troubleshooting techniques were employed, such as checking the wiring connections, ensuring the correct board selection in the Arduino IDE, and experimenting with different USB cables and ports. After numerous attempts and iterations, the ESP32 C3 Dev Kit was successfully connected and programmed.</p>
+        
+        <h3>OLED Screen Integration</h3>
+        <p>Integrating the OLED screen with the ESP32 posed challenges in terms of controlling the on/off behavior based on the photoresistor readings. The OLED screen would turn off when the photoresistor value fell below a threshold, indicating seat occupancy, but it would not turn back on when the value rose above the threshold, signifying that the seat was vacated.</p>
+        <p>To address this issue, the Arduino code was modified to include specific conditions and delays to ensure proper OLED screen functionality.</p>
+        <p>The testdrawstyles function was modified to include a timeout period of 5 seconds, during which the system waits for a button press or checks if someone sits down again. If the button is pressed within the timeout period, the seat status is updated to "available" in the Firebase Realtime Database, and the OLED screen displays a confirmation message. If someone sits down during the timeout period, the OLED screen is cleared, and the function returns, keeping the seat status as "occupied."</p>
+        
+        <h3>PIR Sensor Considerations</h3>
+        <p>Initially, a PIR sensor was considered for detecting the presence of a person in a seat. However, after experimenting with the PIR sensor, it was found to be overly sensitive and challenging to integrate with the ESP32. The PIR sensor's high sensitivity led to false triggers and inconsistent readings, making it difficult to reliably determine seat occupancy.</p>
+        <p>As an alternative, a photoresistor was chosen for motion detection. The photoresistor provided a more stable and practical approach to detecting seat occupancy by measuring the ambient light level. By setting an appropriate threshold value, the system could accurately determine whether someone was sitting in a seat based on the changes in light intensity caused by their presence. The photoresistor proved to be a more reliable and easier-to-integrate solution compared to the PIR sensor.</p>
+        
+        <h3>Front-end Development</h3>
+        <p>Developing the front-end webpage using HTML, CSS, and JavaScript required extensive trial and error to achieve the desired functionality and visual appearance. One of the main challenges was creating the pop-up boxes for placing bid amounts and displaying QR codes within the iPhone mockup. To address this, various CSS techniques were employed, such as absolute positioning, z-index layering, and responsive design principles. JavaScript code was written to dynamically create and manipulate the pop-up elements based on user interactions and bidding states.</p>
+        
+        <h3>Bidding Process Enhancement</h3>
+        <p>To make the bidding process more engaging and realistic, effort was put into brainstorming and implementing features that would enhance the user experience. The goal was to create a sense of competition and urgency during the bidding phase.</p>
+        <p>The solution involved generating randomly simulated bids within a specific time frame to determine a market-clearing price. JavaScript functions were developed to handle the simulated bids, update the seat status in real-time, and provide visual feedback to the user through the front-end interface.</p>
+        
+        <h2>Hardware Assembly and Enclosure</h2>
+        <h3>Soldering</h3>
+        <p>To ensure proper connections between the ESP32 C3 Dev Kit, OLED screen, push button, and photoresistor, precise soldering was required. Soldering the components involved carefully heating the pins and applying solder to create secure electrical connections. Proper soldering techniques, such as maintaining the correct temperature and using the appropriate amount of solder, were essential to ensure the reliability and functionality of the hardware setup.</p>
+        
+        <h3>3D Printed Enclosure</h3>
+        <p>To protect the hardware components and provide a professional appearance, a custom enclosure was designed and 3D printed. The enclosure was obtained from Printables and modified using a heat gun to enlarge the holes for the wires. The 3D printed enclosure not only added aesthetic value to the project but also ensured the safe and secure housing of the components.</p>
+        
+        <h2>Concluding Remarks</h2>
+        <p>The real-time seat bidding system showcases the integration of hardware components with a user-friendly front-end webpage to create an interactive and engaging bidding experience. By leveraging the capabilities of the ESP32 and Firebase Realtime Database, the system enables seamless communication between the physical world and the digital interface. Moreover, the project demonstrates the potential of real-time bidding systems in enhancing the user experience and maximizing revenue opportunities in event settings. With further refinement and scaling, this proof of concept could be adapted to real-world applications, revolutionizing the way people upgrade their seats and engage with live events.</p>
+        
+        <h2>Future Enhancements</h2>
+        <p>While the current implementation of the real-time seat bidding system provides a functional proof of concept, there are several areas where further enhancements could be made:</p>
+        <ol>
+            <li>Scalability: Expand the system to handle a larger number of seats and users, ensuring robust performance and reliability.</li>
+            <li>User Authentication: Implement user authentication and secure payment processing to enable real transactions and prevent fraudulent activities.</li>
+            <li>Enhanced User Interface: Improve the visual design and user experience of the front-end webpage, incorporating more intuitive navigation and responsive layouts.</li>
+            <li>Analytics and Reporting: Integrate analytics and reporting features to track bidding trends, user behavior, and revenue generated, providing valuable insights for event organizers.</li>
+            <li>Integration with Event Management Systems: Explore the possibility of integrating the real-time seat bidding system with existing event management platforms to streamline operations and provide a seamless experience for both organizers and attendees.</li>
+        </ol>
+        <p>By addressing these future enhancements, the real-time seat bidding system can evolve into a robust and commercially viable solution, revolutionizing the way people experience live events and enabling venues to optimize their revenue streams.</p>
+    </div>
 
+    <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const fadeSections = document.querySelectorAll('.fade-section');
+            fadeSections.forEach((section, index) => {
+                const delay = index * 300;
+                setTimeout(() => {
+                    section.style.opacity = 1;
+                }, delay);
+            });
+        });
+    </script>
+</body>
+</html>
