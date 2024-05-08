@@ -95,19 +95,19 @@
 <pre class="code-block"><code>
     <div class="code-wrapper">
 
-#include <WiFi.h>
-#include <FirebaseESP32.h>
-#include <Wire.h>
-#include <Adafruit_GFX.h>
-#include <Adafruit_SSD1306.h>
+#include WiFi.h
+#include FirebaseESP32.h
+#include Wire.h
+#include Adafruit_GFX.h
+#include Adafruit_SSD1306.h
 
 // Replace these with your Wi-Fi network settings
-#define WIFI_SSID "MAKERSPACE"
-#define WIFI_PASSWORD "12345678"
+#define WIFI_SSID " "
+#define WIFI_PASSWORD " "
 
 // Firebase project credentials
-#define FIREBASE_HOST "esp32-firebase-demo-for-mvp-default-rtdb.firebaseio.com"
-#define FIREBASE_AUTH "gtA4YsBVPV8cfGQEFF1iLHLnWlSGYudBjhK6DJHO"
+#define FIREBASE_HOST " "
+#define FIREBASE_AUTH " "
 
 // Define the GPIO pins for the buttons (ESP32-C3 pins)
 const int buttonPins[] = {18, 1, 2, 3};
@@ -333,10 +333,14 @@ void testdrawstyles(String seatId) {
   }
 }
 </code></pre>
-        <style>
+<style>
 .code-wrapper {
   max-height: 400px;
   overflow: auto;
+  background-color: black;
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+  padding: 10px;
 }
 </style>
 
