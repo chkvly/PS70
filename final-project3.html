@@ -34,7 +34,7 @@
             background-color: #f4f4f4;
             padding: 10px;
             overflow-x: auto;
-            font-family: 'Courier New', monospace;
+            font-family: 'Consolas', monospace;
             font-size: 14px;
             border-radius: 4px;
         }
@@ -339,11 +339,124 @@ void testdrawstyles(String seatId) {
   overflow: auto;
   background-color: black;
   color: #00ff00;
-  font-family: 'Courier New', monospace;
+  font-family: 'Consolas', monospace;
   padding: 10px;
 }
 </style>
 
+<h3>HTML Code</h3> 
+<pre class="code-block"><code>
+    <div class="code-wrapper">
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Seat Bidding App</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1lYKx+GvBkr6G4A+oPFaTxl2OgZ6OdmIKqmd6vQnQl3We+lHuCgjUy+EmDg4zPXgb0XO/fVovTDW0K44Oxd8qA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+  <div class="demo">
+    <div class="demo__phone">
+      <div class="demo__screen-wrapper">
+        <div class="demo__screen">
+          <div class="demo__indicator demo__indicator--time">5:30</div>
+          <div class="demo__indicator demo__indicator--signal">
+            <i class="fa fa-signal"></i>
+          </div>
+          <div class="demo__indicator demo__indicator--battery">
+            <div class="battery">
+              <div class="battery-level" id="battery-level"></div>
+            </div>
+          </div>
+          <div class="demo__controls">
+            <div class="demo__arrow">
+              <i class="fa fa-chevron-left"></i>
+            </div>
+            <div class="demo__caption">Real Time Seat Bidding</div>
+            <div class="demo__logo">
+              <img src="https://www.usopen.org/assets/images/header/usopen-header-logo.png" alt="US Open Logo">
+            </div>
+          </div>
+          <div class="match-info">
+            <div class="match-info__court">Court: Louis Armstrong</div>
+            <div class="match-info__session">Session: Men's and Women's 3rd Round</div>
+            <div class="match-info__current">
+              Current Match:
+              <a href="https://www.atptour.com/en/players/carlos-alcaraz/a0e2/overview" class="player-link" target="_blank">C. Alcaraz [2]</a>
+              vs.
+              <a href="https://www.atptour.com/en/players/daniil-medvedev/mm58/overview" class="player-link" target="_blank">D. Medvedev [3]</a>
+            </div>
+          </div>
+          <h2 class="seating-chart-title">Louis Armstrong Seating Chart</h2>
+          <div class="seating-map">
+            <img src="https://www.tennistours.com/img/seating-guides/us-open/Louisarmstrongmap.jpg" alt="Seating Map">
+          </div>
+          <div id="seats-container"></div>
+        </div>
+      </div>
+      <div class="demo__notch"></div>
+    </div>
+  </div>
+  <div class="developer-info">Kabir Mehta - HKS MPP 2024</div>
+
+  <div id="seatModal" class="demo__card-modal">
+    <div class="demo__card-modal-content">
+      <span class="demo__card-modal-close">&times;</span>
+      <h2>Place Your Bid</h2>
+      <p>Enter your bid amount:</p>
+      <div class="demo__card-bid-input">
+        <input type="number" id="bidAmount" min="0" step="1" required>
+        <button id="placeBidBtn">Place Bid</button>
+      </div>
+      <div class="demo__card-timer initial-timer"></div>
+      <div class="demo__card-timer bidding-timer" style="display: none;"></div>
+    </div>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+  <script>
+    // Initialize Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyA9hEAAx7U-2YDgoUiyy5lqnOu0fxe4A1Q",
+      authDomain: "esp32-firebase-demo-for-mvp.firebaseapp.com",
+      databaseURL: "https://esp32-firebase-demo-for-mvp-default-rtdb.firebaseio.com",
+      projectId: "esp32-firebase-demo-for-mvp",
+      storageBucket: "esp32-firebase-demo-for-mvp.appspot.com",
+      messagingSenderId: "579150248970",
+      appId: "1:579150248970:web:a1bb637ddb940e7b5bf3f3"
+    };
+    firebase.initializeApp(firebaseConfig);
+  </script>
+  <script src="script.js"></script>
+
+<div id="bidResultModal" class="demo__card-modal">
+  <div class="demo__card-modal-content">
+    <span class="demo__card-modal-close">&times;</span>
+    <h2 id="bidResultTitle"></h2>
+    <p id="bidResultMessage"></p>
+    <div class="qr-code-container">
+      <img id="qrCode" src="" alt="QR Code">
+    </div>
+    <button id="closeResultModalBtn">Close this window</button>
+  </div>
+</div>
+</body>
+</html>
+
+</code></pre>
+<style>
+.code-wrapper {
+  max-height: 400px;
+  overflow: auto;
+  background-color: black;
+  color: #00ff00;
+  font-family: 'Consolas', monospace;
+  padding: 10px;
+}
+</style>
 
         
     </div>
