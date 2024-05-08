@@ -93,6 +93,7 @@
 <h2>Code</h2> 
 <h3>Arduino Code</h3> 
 <pre class="code-block"><code>
+    <div class="code-wrapper">
 
 #include <WiFi.h>
 #include <FirebaseESP32.h>
@@ -331,8 +332,13 @@ void testdrawstyles(String seatId) {
     Serial.println("No button pressed. Seat " + seatId + " remains occupied");
   }
 }
-
 </code></pre>
+        <style>
+.code-wrapper {
+  max-height: 400px;
+  overflow: auto;
+}
+</style>
 
 
         
