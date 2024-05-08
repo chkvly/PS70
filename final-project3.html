@@ -30,6 +30,14 @@
             max-width: 300px;
             height: auto;
         }
+        .code-block {
+            background-color: #f4f4f4;
+            padding: 10px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            border-radius: 4px;
+        }
     </style>
 </head>
 <body>
@@ -81,6 +89,252 @@
         
         <h2>Concluding Remarks</h2>
         <p>The real-time seat bidding system showcases the integration of hardware components with a user-friendly front-end webpage to create an interactive and engaging bidding experience. By leveraging the capabilities of the ESP32 and Firebase Realtime Database, the system enables seamless communication between the physical world and the digital interface. Moreover, the project demonstrates the potential of real-time bidding systems in enhancing the user experience and maximizing revenue opportunities in event settings. With further refinement and scaling, this proof of concept could be adapted to real-world applications, revolutionizing the way people upgrade their seats and engage with live events.</p>
+
+<h2>Code</h2> 
+<h3>Arduino Code</h3> 
+<pre class="code-block"><code>
+
+#include <WiFi.h>
+#include <FirebaseESP32.h>
+#include <Wire.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+
+// Replace these with your Wi-Fi network settings
+#define WIFI_SSID "MAKERSPACE"
+#define WIFI_PASSWORD "12345678"
+
+// Firebase project credentials
+#define FIREBASE_HOST "esp32-firebase-demo-for-mvp-default-rtdb.firebaseio.com"
+#define FIREBASE_AUTH "gtA4YsBVPV8cfGQEFF1iLHLnWlSGYudBjhK6DJHO"
+
+// Define the GPIO pins for the buttons (ESP32-C3 pins)
+const int buttonPins[] = {18, 1, 2, 3};
+const String seatIds[] = {"seat1", "seat2", "seat3", "seat4"};
+
+// Define the analog pin for the photoresistor
+const int photoresistorPin = A0;
+
+// Define the threshold value for detecting if someone is sitting or has gotten up
+const int sittingThreshold = 800;
+
+#define I2C_SDA 4  // Use GPIO 4 for I2C SDA
+#define I2C_SCL 5  // Use GPIO 5 for I2C SCL
+
+TwoWire I2C_screen = TwoWire(0);
+
+#define SCREEN_WIDTH 128 // OLED display width, in pixels
+#define SCREEN_HEIGHT 64 // OLED display height, in pixels
+
+// Declaration for an SSD1306 display connected to I2C (SDA, SCL pins)
+#define OLED_RESET     -1 // Reset pin # (or -1 if sharing Arduino reset pin)
+#define SCREEN_ADDRESS 0x3C ///< See datasheet for Address; 0x3D for 128x64, 0x3C for 128x32
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &I2C_screen, OLED_RESET);
+
+FirebaseData fbdo;
+FirebaseAuth auth;
+FirebaseConfig config;
+
+// Add a new variable to track the sitting status
+bool isSitting = false;
+
+// Add a debounce delay for the photoresistor readings
+const unsigned long debounceDelay = 500; // Adjust the delay as needed
+
+void setup() {
+  Serial.begin(115200);
+
+  // Set button pins as inputs with built-in pull-up resistors
+  for (int i = 0; i < sizeof(buttonPins) / sizeof(buttonPins[0]); i++) {
+    pinMode(buttonPins[i], INPUT_PULLUP);
+  }
+
+  // Initialize the OLED display
+  I2C_screen.begin(I2C_SDA, I2C_SCL, 100000);
+  if (!display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS)) {
+    Serial.println(F("SSD1306 allocation failed"));
+    for (;;); // Don't proceed, loop forever
+  }
+  display.clearDisplay();
+  display.setTextColor(WHITE);
+  display.setTextSize(1);
+
+  // Connect to the Wi-Fi network
+  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+  Serial.print("Connecting to Wi-Fi");
+  while (WiFi.status() != WL_CONNECTED) {
+    Serial.print(".");
+    delay(300);
+  }
+  Serial.println(" connected");
+
+  /* Assign the project host */
+  config.host = FIREBASE_HOST;
+
+  /* Assign the Firebase authentication credentials */
+  config.signer.tokens.legacy_token = FIREBASE_AUTH;
+
+  /* Initialize the library with the Firebase config */
+  Firebase.begin(&config, &auth);
+
+  Serial.println("Connected to Firebase");
+
+  testdrawstyles("1");
+}
+
+void loop() {
+  // Read the photoresistor value
+  int lightValue = analogRead(photoresistorPin);
+
+  // Print the light value
+  Serial.print("Light Value: ");
+  Serial.println(lightValue);
+
+  // Calculate the average light value over a short period
+  const int numReadings = 10;
+  int readings[numReadings];
+  int readIndex = 0;
+  int total = 0;
+
+  for (int i = 0; i < numReadings; i++) {
+    readings[i] = 0;
+  }
+
+  for (int i = 0; i < numReadings; i++) {
+    readings[readIndex] = lightValue;
+    total += readings[readIndex];
+    readIndex = (readIndex + 1) % numReadings;
+    delay(50);
+  }
+
+  int avgLightValue = total / numReadings;
+
+  // Print the average light value
+  Serial.print("Average Light Value: ");
+  Serial.println(avgLightValue);
+
+  if (avgLightValue >= sittingThreshold && isSitting) {
+    // Someone has gotten up from the seat
+    isSitting = false;
+    Serial.println("Someone has gotten up from the seat!");
+
+    // Check the current status of the seat
+    String seatId = "seat1"; // Replace with the appropriate seat ID
+    String seatPath = "seats/" + seatId;
+
+    if (Firebase.getString(fbdo, seatPath + "/status")) {
+      if (fbdo.stringData().equals("occupied")) {
+        // Display the prompt using the testdrawstyles() function
+        testdrawstyles(seatId);
+      }
+    } else {
+      Serial.println("Failed to read seat status from Firebase");
+    }
+
+    // Add a debounce delay to stabilize the readings
+    delay(debounceDelay);
+  } else if (avgLightValue < sittingThreshold && !isSitting) {
+    // Someone is sitting
+    isSitting = true;
+    Serial.println("Someone is sitting. Display cleared.");
+
+    // Clear the display
+    display.clearDisplay();
+    display.display();
+  }
+
+  // Check if Button 1 is pressed
+  if (digitalRead(buttonPins[0]) == LOW) {
+    String seatId = "seat1"; // Replace with the appropriate seat ID
+    String seatPath = "seats/" + seatId;
+
+    if (Firebase.getString(fbdo, seatPath + "/status")) {
+      if (fbdo.stringData().equals("occupied")) {
+        // Update seat status to "available" in Firebase
+        if (Firebase.setString(fbdo, seatPath + "/status", "available")) {
+          Serial.println("Seat " + seatId + " is now available for bidding");
+          display.clearDisplay();
+          display.setCursor(0, 0);
+          display.println("Seat " + seatId);
+          display.println("Available for");
+          display.println("bidding");
+          display.display();
+          delay(2000); // Display the confirmation for 2 seconds
+        } else {
+          Serial.println("Failed to update seat status in Firebase");
+        }
+      }
+    } else {
+      Serial.println("Failed to read seat status from Firebase");
+    }
+
+    // Add a debounce delay to avoid multiple button presses
+    delay(500);
+  }
+}
+
+void testdrawstyles(String seatId) {
+  display.clearDisplay();
+  Serial.println("Drawing on screen");
+  display.setTextSize(1);
+  display.setTextColor(SSD1306_WHITE);
+  display.setCursor(0, 0);
+  display.println("Seat vacated!");
+
+  display.setCursor(0, 10);
+  display.println("Seat: " + seatId);
+
+  display.setCursor(0, 20);
+  display.println("Make seat available?");
+
+  display.setCursor(0, 30);
+  display.println("Press Button 1");
+
+  display.setCursor(0, 40);
+  display.println("to confirm");
+
+  display.display();
+
+  // Wait for button press or timeout
+  unsigned long startTime = millis();
+  bool buttonPressed = false;
+  while (millis() - startTime < 5000) { // 5-second timeout
+    if (digitalRead(buttonPins[0]) == LOW) {
+      buttonPressed = true;
+      break;
+    }
+
+    // Check if someone sits down during the timeout period
+    if (analogRead(photoresistorPin) < sittingThreshold) {
+      isSitting = true;
+      display.clearDisplay();
+      display.display();
+      return;
+    }
+  }
+
+  if (buttonPressed) {
+    // Update seat status to "available" in Firebase
+    if (Firebase.setString(fbdo, "seats/" + seatId + "/status", "available")) {
+      Serial.println("Seat " + seatId + " is now available for bidding");
+      display.clearDisplay();
+      display.setCursor(0, 0);
+      display.println("Seat " + seatId);
+      display.println("Available for");
+      display.println("bidding");
+      display.display();
+      delay(2000); // Display the confirmation for 2 seconds
+    } else {
+      Serial.println("Failed to update seat status in Firebase");
+    }
+  } else {
+    Serial.println("No button pressed. Seat " + seatId + " remains occupied");
+  }
+}
+
+</code></pre>
+
+
         
     </div>
 
