@@ -42,6 +42,96 @@
     <h2>Future Enhancements</h2>
     <p>Based on the feedback and observations from the MVP demo, several enhancements are planned to refine the functionality, user experience, and performance for the final product, including: incorporating a motion sensor to detect if a seat is occupied, creating a more dynamic bidding system, and potentially creating an iPhone mock-up of the bidding interface.</p>
 
+    <h2>Arduino Code</h2> 
+<pre class="code-block"><code>
+    <div class="code-wrapper">
+
+#include <WiFi.h>
+#include <FirebaseESP32.h>
+
+// Replace these with your Wi-Fi network settings
+#define WIFI_SSID "MAKERSPACE"
+#define WIFI_PASSWORD "12345678"
+
+// Firebase project credentials
+#define FIREBASE_HOST "esp32-firebase-demo-for-mvp-default-rtdb.firebaseio.com"
+#define FIREBASE_AUTH "gtA4YsBVPV8cfGQEFF1iLHLnWlSGYudBjhK6DJHO"
+
+// Define the GPIO pins for the buttons
+const int buttonPins[] = {25, 26, 27, 32};
+const String seatIds[] = {"seat1", "seat2", "seat3", "seat4"};
+
+FirebaseData fbdo;
+FirebaseAuth auth;
+FirebaseConfig config;
+
+void setup() {
+  Serial.begin(115200);
+
+  // Set button pins as inputs with built-in pull-up resistors
+  for (int i = 0; i < sizeof(buttonPins) / sizeof(buttonPins[0]); i++) {
+    pinMode(buttonPins[i], INPUT_PULLUP);
+  }
+
+  // Connect to the Wi-Fi network
+  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+  Serial.print("Connecting to Wi-Fi");
+  while (WiFi.status() != WL_CONNECTED) {
+    Serial.print(".");
+    delay(300);
+  }
+  Serial.println(" connected");
+
+  /* Assign the project host */
+  config.host = FIREBASE_HOST;
+
+  /* Assign the Firebase authentication credentials */
+  config.signer.tokens.legacy_token = FIREBASE_AUTH;
+
+  /* Initialize the library with the Firebase config */
+  Firebase.begin(&config, &auth);
+
+  Serial.println("Connected to Firebase");
+}
+
+void loop() {
+  // Read the button states
+  for (int i = 0; i < sizeof(buttonPins) / sizeof(buttonPins[0]); i++) {
+    int buttonState = digitalRead(buttonPins[i]);
+
+    // If the button is pressed, start the bidding process
+    if (buttonState == LOW) {
+  String seatId = seatIds[i];
+  String seatPath = "seats/" + seatId;
+
+      // Check if the seat is available for bidding
+if (Firebase.getString(fbdo, seatPath + "/status")) {
+    if (fbdo.stringData().equals("available")) {
+      // Start the bidding process
+      Firebase.setString(fbdo, seatPath + "/status", "bidding");
+      Serial.println("Bidding started for Seat " + seatId);
+    } else {
+      Serial.println("Seat " + seatId + " is not available for bidding");
+    }
+  } else {
+    Serial.println("Failed to read seat status from Firebase");
+  }
+
+  delay(500); // Debounce delay
+}
+  }
+}
+        </code></pre>
+<style>
+.code-wrapper {
+  max-height: 400px;
+  overflow: auto;
+  background-color: black;
+  color: #00ff00;
+  font-family: 'Consolas', monospace;
+  padding: 10px;
+}
+</style>
 </div>
 
 </body>
