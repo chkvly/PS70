@@ -458,6 +458,729 @@ void testdrawstyles(String seatId) {
 }
 </style>
 
+<h3>CSS Code</h3> 
+<pre class="code-block"><code>
+    <div class="code-wrapper">
+
+/* Reset styles */
+*, *:before, *:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Source Sans Pro', monospace;
+  background-color: #f5deb3;
+}
+
+.demo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.demo__phone {
+  position: relative;
+  width: 375px;
+  height: 812px;
+  background-color: #120d30;
+  border-radius: 40px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.demo__screen-wrapper {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  background-color: #fff;
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.demo__screen {
+  position: relative;
+  height: 100%;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.demo__indicator {
+  position: absolute;
+  font-size: 16px;
+  color: #120d30;
+}
+
+.demo__indicator--time {
+  left: 30px;
+  top: 22px;
+}
+
+.demo__indicator--signal {
+  right: 60px;
+}
+
+.demo__controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  color: #000;
+  top: 60px;
+  position: absolute;
+  width: 100%;
+}
+
+.demo__arrow {
+  position: absolute;
+  left: 20px;
+  font-size: 20px;
+}
+
+.demo__caption {
+  font-size: 20px;
+  font-weight: 700;
+  position: relative;
+  top: -41px;
+    transform: translateX(-3.5%);
+  text-align: center;
+  width: 100%;
+}
+
+.demo__notch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 30px;
+  background-color: #120d30;
+  border-radius: 0 0 20px 20px;
+}
+
+.demo__card {
+  position: relative;
+  margin: 20px;
+  height: 90px;
+  font-size: 24px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  cursor: pointer;
+}
+
+.demo__card-frontside {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+}
+
+.demo__card-caption {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.demo__card-description {
+  font-size: 14px;
+  color: #666;
+}
+
+.seat-sold {
+  background-color: #8b0000;
+  color: #fff;
+}
+
+.seat-bidding {
+  font-weight: bold;
+}
+
+.seat-available {
+  background-color: #00ff00;
+}
+
+.seat-occupied {
+  background-color: #ccc;
+}
+
+.match-info {
+  margin-bottom: 70px;
+  text-align: center;
+  position: relative;
+  top: 45px;
+}
+
+.match-info__court,
+.match-info__session,
+.match-info__current {
+  margin-bottom: 3px;
+}
+
+.seating-chart-title {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.seating-map {
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.seating-map img {
+  width: 100%;
+  height: auto;
+}
+
+.seat-bidding {
+  background-color: #ffd700;
+  font-weight: bold;
+}
+
+.developer-info {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+}
+
+.player-link {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.player-link:hover {
+  color: darkblue;
+}
+
+.developer-info {
+  position: fixed;
+  bottom: 23px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  color: #666;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.demo__card-modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.demo__card-modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 320px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.demo__card-modal-close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.demo__card-modal-close:hover,
+.demo__card-modal-close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.demo__card-bid-input {
+  margin-top: 10px;
+}
+
+.demo__card-timer {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.confirm-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  z-index: 2;
+  width: 80%;
+  max-width: 320px;
+  text-align: center;
+}
+
+.confirm-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.confirm-buttons button {
+  padding: 8px 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.qr-code-container {
+  margin-top: 20px;
+}
+
+#qrCode {
+  width: 200px;
+  height: 200px;
+}
+
+#closeResultModalBtn {
+  margin-top: 20px;
+  padding: 8px 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.demo__logo {
+  position: absolute;
+  top: calc(100% + 5px)
+  left: 50%;
+  transform: translateX(-28%);
+  margin-top: -112px;
+}
+
+.demo__logo img {
+  width: 100px;
+  height: auto;
+}
+
+</code></pre>
+<style>
+.code-wrapper {
+  max-height: 400px;
+  overflow: auto;
+  background-color: black;
+  color: #00ff00;
+  font-family: 'Consolas', monospace;
+  padding: 10px;
+}
+</style>
+
+        <h3>JavaScript Code</h3> 
+<pre class="code-block"><code>
+    <div class="code-wrapper">
+
+// Get the modal element
+const seatModal = document.getElementById('seatModal');
+
+// Get the close button element
+const closeBtn = document.querySelector('.demo__card-modal-close');
+
+// Get the place bid button element
+const placeBidBtn = document.getElementById('placeBidBtn');
+
+// Get the bid amount input field
+const bidAmountInput = document.getElementById('bidAmount');
+
+// Get the bid input container
+const bidInputContainer = document.querySelector('.demo__card-bid-input');
+
+// Get the initial timer element
+const initialTimerElement = document.querySelector('.demo__card-timer.initial-timer');
+
+// Get the bidding timer element
+const biddingTimerElement = document.querySelector('.demo__card-timer.bidding-timer');
+
+// Get a reference to the seats container
+const seatsContainer = document.getElementById('seats-container');
+
+// Reference to the Firebase Realtime Database
+const database = firebase.database();
+
+// Function to create a seat element
+function createSeatElement(seatId, seatData) {
+  const seatCard = document.createElement('div');
+  seatCard.classList.add('demo__card', 'seat-card');
+  seatCard.setAttribute('data-seat-id', seatId);
+
+  const seatFrontside = document.createElement('div');
+  seatFrontside.classList.add('demo__card-frontside');
+
+  const seatCaption = document.createElement('div');
+  seatCaption.classList.add('demo__card-caption');
+
+  const seatDescription = document.createElement('div');
+  seatDescription.classList.add('demo__card-description');
+  seatDescription.textContent = 'Tap to place a bid';
+
+  if (seatData.status === 'sold') {
+    seatCard.classList.add('seat-sold');
+    seatCaption.textContent = `Seat ${seatId} - Sold`;
+  } else if (seatData.status === 'bidding') {
+    seatCard.classList.add('seat-bidding');
+    seatCaption.textContent = `Seat ${seatId} - Bidding: $${seatData.bidAmount}`;
+  } else if (seatData.status === 'available') {
+    seatCard.classList.add('seat-available');
+    seatCaption.textContent = `Seat ${seatId} - Available`;
+  } else if (seatData.status === 'occupied') {
+    seatCard.classList.add('seat-occupied');
+    seatCaption.textContent = `Seat ${seatId} - Occupied`;
+    seatDescription.style.display = 'none';
+  }
+
+  seatFrontside.appendChild(seatCaption);
+  seatFrontside.appendChild(seatDescription);
+
+  seatCard.appendChild(seatFrontside);
+
+  seatCard.addEventListener('click', () => {
+    handleSeatClick(seatId);
+  });
+
+  return seatCard;
+}
+
+function handleSeatClick(seatId) {
+  const seatRef = database.ref('seats/' + seatId);
+  const seatCard = document.querySelector(`.seat-card[data-seat-id="${seatId}"]`);
+
+  seatRef.once('value', snapshot => {
+    const seatData = snapshot.val();
+    const seatStatus = seatData.status;
+
+    if (seatStatus === 'available') {
+      // Show the confirmation modal
+      const confirmModal = document.createElement('div');
+      confirmModal.classList.add('confirm-modal');
+
+      const confirmText = document.createElement('p');
+      confirmText.textContent = 'You will have 10 seconds to place a bid. After placing a bid, the market-clearing price will be determined based on demand for the seat. Do you wish to proceed?';
+
+      const confirmButtons = document.createElement('div');
+      confirmButtons.classList.add('confirm-buttons');
+
+      const confirmNo = document.createElement('button');
+      confirmNo.textContent = 'No';
+      confirmNo.addEventListener('click', () => {
+        confirmModal.remove();
+      });
+
+      const confirmYes = document.createElement('button');
+      confirmYes.textContent = 'Yes';
+      confirmYes.addEventListener('click', () => {
+        confirmModal.remove();
+        showBidModal(seatId, seatRef);
+      });
+
+      confirmButtons.appendChild(confirmNo);
+      confirmButtons.appendChild(confirmYes);
+
+      confirmModal.appendChild(confirmText);
+      confirmModal.appendChild(confirmButtons);
+
+      document.body.appendChild(confirmModal);
+    } else {
+      console.log('Seat is not available for bidding');
+    }
+  });
+}
+
+// Function to show the bid modal with the two timers
+function showBidModal(seatId, seatRef) {
+  // Show the bid modal
+  seatModal.style.display = 'block';
+
+  // Focus the input field immediately
+  bidAmountInput.focus();
+
+  // Close the modal when the close button is clicked
+  closeBtn.onclick = function() {
+    seatModal.style.display = 'none';
+  }
+
+  // Close the modal when clicked outside the modal content
+  window.onclick = function(event) {
+    if (event.target == seatModal) {
+      seatModal.style.display = 'none';
+    }
+  }
+
+  // Start the initial timer
+  let initialTimeLeft = 10; // 10 seconds to place the initial bid
+  initialTimerElement.textContent = initialTimeLeft;
+  const initialTimerInterval = setInterval(() => {
+    initialTimeLeft--;
+    initialTimerElement.textContent = initialTimeLeft;
+
+    if (initialTimeLeft === 0) {
+      clearInterval(initialTimerInterval);
+      // Show the bid input container and start the bidding timer
+      bidInputContainer.style.display = 'block';
+      startBiddingTimer(seatId, seatRef);
+    }
+  }, 1000);
+
+  // Handle place bid button click
+  placeBidBtn.onclick = function() {
+    const bidAmount = bidAmountInput.value;
+
+    if (bidAmount !== '') {
+      const bidAmountNumber = parseFloat(bidAmount);
+
+      if (bidAmountNumber > 0) {
+        seatRef.update({
+          status: 'bidding',
+          bidAmount: bidAmountNumber
+        })
+        .then(() => {
+          console.log('Bid placed successfully');
+        })
+        .catch(error => {
+          console.error('Error placing bid:', error);
+        });
+      } else {
+        // Display an error message or notification
+        console.error('Bid amount must be greater than $0');
+      }
+    }
+  }
+}
+
+// Function to start the bidding timer
+function startBiddingTimer(seatId, seatRef) {
+  const bidAmountNumber = parseFloat(bidAmountInput.value);
+  if (bidAmountNumber >= 1) {
+    biddingTimerElement.style.display = 'block';
+    let timeLeft = 10;
+    biddingTimerElement.textContent = `Bidding Time: ${timeLeft} seconds`;
+    const timerInterval = setInterval(() => {
+      timeLeft--;
+      biddingTimerElement.textContent = `Bidding Time: ${timeLeft} seconds`;
+
+      // Simulate other users placing bids
+      simulateOtherUserBids(seatId, seatRef, bidAmountNumber);
+
+      if (timeLeft === 0) {
+        clearInterval(timerInterval);
+        // Confirm the highest bid and update the seat status
+        confirmHighestBid(seatId, seatRef, bidAmountNumber);
+        seatModal.style.display = 'none';
+      }
+    }, 1000);
+  } else {
+    console.error('Bid amount must be at least $200');
+  }
+}
+
+// Listen for changes in seat status
+database.ref('seats').on('value', snapshot => {
+  // Clear the seats container
+  seatsContainer.innerHTML = '';
+
+  snapshot.forEach(seatSnapshot => {
+    const seatId = seatSnapshot.key;
+    const seatData = seatSnapshot.val();
+
+    // Create a seat element and append it to the seats container
+    const seatElement = createSeatElement(seatId, seatData);
+    seatsContainer.appendChild(seatElement);
+  });
+});
+
+// Function to handle seat hover
+function handleSeatHover(seatId) {
+  const seatCard = document.querySelector(`.seat-card[data-seat-id="${seatId}"]`);
+  seatCard.classList.add('active');
+}
+
+// Function to handle seat hover out
+function handleSeatHoverOut(seatId) {
+  const seatCard = document.querySelector(`.seat-card[data-seat-id="${seatId}"]`);
+  seatCard.classList.remove('active');
+}
+
+// Add event listeners to seat map areas
+const seatMapAreas = document.querySelectorAll('area[data-seat-id]');
+seatMapAreas.forEach(area => {
+  const seatId = area.getAttribute('data-seat-id');
+  area.addEventListener('mouseover', () => handleSeatHover(seatId));
+  area.addEventListener('mouseout', () => handleSeatHoverOut(seatId));
+});
+
+// Get the developer info element
+const developerInfo = document.querySelector('.developer-info');
+
+// Get the screen element
+const screen = document.querySelector('.demo__screen');
+
+// Add an event listener for scroll
+screen.addEventListener('scroll', () => {
+  // Calculate the scrollable height
+  const scrollableHeight = screen.scrollHeight - screen.clientHeight;
+
+  // Check if the user has scrolled to the bottom
+  if (screen.scrollTop >= scrollableHeight) {
+    // Show the developer info element
+    developerInfo.style.opacity = '1';
+  } else {
+    // Hide the developer info element
+    developerInfo.style.opacity = '0';
+  }
+});
+
+// Function to simulate other users placing bids
+function simulateOtherUserBids(seatId, seatRef, userBidAmount) {
+  // Generate a random bid amount (e.g., between 200 and 500)
+  const randomBidAmount = Math.floor(Math.random() * 301) + 200;
+
+  // Update the seat status with the simulated bid amount if it's higher than the user's bid
+  if (randomBidAmount > userBidAmount) {
+    seatRef.update({
+      status: 'bidding',
+      bidAmount: randomBidAmount
+    })
+    .then(() => {
+      console.log(`Simulated bid of $${randomBidAmount} placed on seat ${seatId}`);
+      // Check if the user has been outbid and display a notification
+      checkUserOutbid(seatId, randomBidAmount);
+    })
+    .catch(error => {
+      console.error('Error simulating bid:', error);
+    });
+  }
+}
+
+// Function to check if the user has been outbid and display a notification
+function checkUserOutbid(seatId, highestBidAmount) {
+  const seatCard = document.querySelector(`.seat-card[data-seat-id="${seatId}"]`);
+  const userBidInput = seatCard.querySelector('.demo__card-bid-input input');
+  const userBidAmount = parseFloat(userBidInput.value);
+
+  if (userBidAmount < highestBidAmount) {
+    // Display a notification or prompt for the user to place a higher bid
+    const outbidNotification = document.createElement('div');
+    outbidNotification.classList.add('outbid-notification');
+
+    const notificationText = document.createElement('p');
+    notificationText.textContent = `You have been outbid! The highest bid is now $${highestBidAmount}. Do you want to place a higher bid?`;
+
+    const confirmButton = document.createElement('button');
+    confirmButton.textContent = 'Yes, Place Higher Bid';
+    confirmButton.addEventListener('click', () => {
+      userBidInput.focus();
+      outbidNotification.style.display = 'none';
+    });
+
+    const cancelButton = document.createElement('button');
+    cancelButton.textContent = 'No, Forfeit Seat';
+    cancelButton.addEventListener('click', () => {
+      console.log(`User forfeited seat ${seatId}`);
+      outbidNotification.style.display = 'none';
+    });
+
+    outbidNotification.appendChild(notificationText);
+    outbidNotification.appendChild(confirmButton);
+    outbidNotification.appendChild(cancelButton);
+
+    document.body.appendChild(outbidNotification);
+    outbidNotification.style.display = 'block';
+  }
+}
+
+// Function to confirm the highest bid and update the seat status
+function confirmHighestBid(seatId, seatRef, userBidAmount) {
+  seatRef.once('value', snapshot => {
+    const seatData = snapshot.val();
+    const highestBidAmount = seatData.bidAmount;
+
+     if (parseFloat(userBidAmount) >= highestBidAmount) {
+      // User has the highest bid, mark the seat as "Sold"
+      seatRef.update({
+        status: 'sold',
+        bidAmount: parseFloat(userBidAmount)
+      })
+      .then(() => {
+        console.log(`Seat ${seatId} sold for $${userBidAmount}`);
+        bidResultTitle.textContent = 'Congratulations!';
+        bidResultMessage.textContent = 'You\'ve upgraded your seat. To access your seat, please show the below QR code to a US Open staff member nearest to your new seat.';
+        qrCode.src = '/Users/kabir/Documents/Harvard/Spring 2024/Fabrication/MVP/images/Untitled.jpeg'; // Replace with the actual path to your QR code image
+        bidResultModal.style.display = 'block';
+      })
+      .catch(error => {
+        console.error('Error selling seat:', error);
+      });
+    } else {
+      // User did not have the highest bid, mark the seat as "Available" again
+      seatRef.update({
+        status: 'available',
+        bidAmount: null
+      })
+      .then(() => {
+        console.log(`Seat ${seatId} marked as available again`);
+        bidResultTitle.textContent = 'Unfortunately, you were not the highest bidder.';
+        bidResultMessage.textContent = `The seat was sold for $${highestBidAmount}. Additional seats are likely to become available. If you would like to be notified when a seat becomes available for bidding, please scan the below QR code.`;
+        qrCode.src = '/Users/kabir/Documents/Harvard/Spring 2024/Fabrication/MVP/images/Untitled(1).jpeg'; // Replace with the actual path to your QR code image
+        bidResultModal.style.display = 'block';
+      })
+      .catch(error => {
+        console.error('Error updating seat status:', error);
+      });
+    }
+
+    closeResultModalBtn.onclick = function() {
+      bidResultModal.style.display = 'none';
+    }
+  });
+}
+</code></pre>
+<style>
+.code-wrapper {
+  max-height: 400px;
+  overflow: auto;
+  background-color: black;
+  color: #00ff00;
+  font-family: 'Consolas', monospace;
+  padding: 10px;
+}
+</style>
+
         
     </div>
 
