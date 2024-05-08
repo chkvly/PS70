@@ -348,76 +348,76 @@ void testdrawstyles(String seatId) {
 <pre class="code-block"><code>
     <div class="code-wrapper">
 
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Seat Bidding App</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1lYKx+GvBkr6G4A+oPFaTxl2OgZ6OdmIKqmd6vQnQl3We+lHuCgjUy+EmDg4zPXgb0XO/fVovTDW0K44Oxd8qA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
-<body>
-  <div class="demo">
-    <div class="demo__phone">
-      <div class="demo__screen-wrapper">
-        <div class="demo__screen">
-          <div class="demo__indicator demo__indicator--time">5:30</div>
-          <div class="demo__indicator demo__indicator--signal">
-            <i class="fa fa-signal"></i>
-          </div>
-          <div class="demo__indicator demo__indicator--battery">
-            <div class="battery">
-              <div class="battery-level" id="battery-level"></div>
-            </div>
-          </div>
-          <div class="demo__controls">
-            <div class="demo__arrow">
-              <i class="fa fa-chevron-left"></i>
-            </div>
-            <div class="demo__caption">Real Time Seat Bidding</div>
-            <div class="demo__logo">
-              <img src="https://www.usopen.org/assets/images/header/usopen-header-logo.png" alt="US Open Logo">
-            </div>
-          </div>
-          <div class="match-info">
-            <div class="match-info__court">Court: Louis Armstrong</div>
-            <div class="match-info__session">Session: Men's and Women's 3rd Round</div>
-            <div class="match-info__current">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Seat Bidding App&lt;/title&gt;
+  &lt;link rel="stylesheet" type="text/css" href="style.css"&gt;
+  &lt;link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet"&gt;
+  &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1lYKx+GvBkr6G4A+oPFaTxl2OgZ6OdmIKqmd6vQnQl3We+lHuCgjUy+EmDg4zPXgb0XO/fVovTDW0K44Oxd8qA==" crossorigin="anonymous" referrerpolicy="no-referrer" /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="demo"&gt;
+    &lt;div class="demo__phone"&gt;
+      &lt;div class="demo__screen-wrapper"&gt;
+        &lt;div class="demo__screen"&gt;
+          &lt;div class="demo__indicator demo__indicator--time"&gt;5:30&lt;/div&gt;
+          &lt;div class="demo__indicator demo__indicator--signal"&gt;
+            &lt;i class="fa fa-signal"&gt;&lt;/i&gt;
+          &lt;/div&gt;
+          &lt;div class="demo__indicator demo__indicator--battery"&gt;
+            &lt;div class="battery"&gt;
+              &lt;div class="battery-level" id="battery-level"&gt;&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class="demo__controls"&gt;
+            &lt;div class="demo__arrow"&gt;
+              &lt;i class="fa fa-chevron-left"&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div class="demo__caption"&gt;Real Time Seat Bidding&lt;/div&gt;
+            &lt;div class="demo__logo"&gt;
+              &lt;img src="https://www.usopen.org/assets/images/header/usopen-header-logo.png" alt="US Open Logo"&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class="match-info"&gt;
+            &lt;div class="match-info__court"&gt;Court: Louis Armstrong&lt;/div&gt;
+            &lt;div class="match-info__session"&gt;Session: Men's and Women's 3rd Round&lt;/div&gt;
+            &lt;div class="match-info__current"&gt;
               Current Match:
-              <a href="https://www.atptour.com/en/players/carlos-alcaraz/a0e2/overview" class="player-link" target="_blank">C. Alcaraz [2]</a>
+              &lt;a href="https://www.atptour.com/en/players/carlos-alcaraz/a0e2/overview" class="player-link" target="_blank"&gt;C. Alcaraz [2]&lt;/a&gt;
               vs.
-              <a href="https://www.atptour.com/en/players/daniil-medvedev/mm58/overview" class="player-link" target="_blank">D. Medvedev [3]</a>
-            </div>
-          </div>
-          <h2 class="seating-chart-title">Louis Armstrong Seating Chart</h2>
-          <div class="seating-map">
-            <img src="https://www.tennistours.com/img/seating-guides/us-open/Louisarmstrongmap.jpg" alt="Seating Map">
-          </div>
-          <div id="seats-container"></div>
-        </div>
-      </div>
-      <div class="demo__notch"></div>
-    </div>
-  </div>
-  <div class="developer-info">Kabir Mehta - HKS MPP 2024</div>
+              &lt;a href="https://www.atptour.com/en/players/daniil-medvedev/mm58/overview" class="player-link" target="_blank"&gt;D. Medvedev [3]&lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;h2 class="seating-chart-title"&gt;Louis Armstrong Seating Chart&lt;/h2&gt;
+          &lt;div class="seating-map"&gt;
+            &lt;img src="https://www.tennistours.com/img/seating-guides/us-open/Louisarmstrongmap.jpg" alt="Seating Map"&gt;
+          &lt;/div&gt;
+          &lt;div id="seats-container"&gt;&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class="demo__notch"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="developer-info"&gt;Kabir Mehta - HKS MPP 2024&lt;/div&gt;
 
-  <div id="seatModal" class="demo__card-modal">
-    <div class="demo__card-modal-content">
-      <span class="demo__card-modal-close">&times;</span>
-      <h2>Place Your Bid</h2>
-      <p>Enter your bid amount:</p>
-      <div class="demo__card-bid-input">
-        <input type="number" id="bidAmount" min="0" step="1" required>
-        <button id="placeBidBtn">Place Bid</button>
-      </div>
-      <div class="demo__card-timer initial-timer"></div>
-      <div class="demo__card-timer bidding-timer" style="display: none;"></div>
-    </div>
-  </div>
+  &lt;div id="seatModal" class="demo__card-modal"&gt;
+    &lt;div class="demo__card-modal-content"&gt;
+      &lt;span class="demo__card-modal-close"&gt;&amp;times;&lt;/span&gt;
+      &lt;h2&gt;Place Your Bid&lt;/h2&gt;
+      &lt;p&gt;Enter your bid amount:&lt;/p&gt;
+      &lt;div class="demo__card-bid-input"&gt;
+        &lt;input type="number" id="bidAmount" min="0" step="1" required&gt;
+        &lt;button id="placeBidBtn"&gt;Place Bid&lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div class="demo__card-timer initial-timer"&gt;&lt;/div&gt;
+      &lt;div class="demo__card-timer bidding-timer" style="display: none;"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
 
-  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
-  <script>
+  &lt;script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"&gt;&lt;/script&gt;
+  &lt;script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"&gt;&lt;/script&gt;
+  &lt;script&gt;
     // Initialize Firebase
     const firebaseConfig = {
       apiKey: "AIzaSyA9hEAAx7U-2YDgoUiyy5lqnOu0fxe4A1Q",
@@ -429,22 +429,22 @@ void testdrawstyles(String seatId) {
       appId: "1:579150248970:web:a1bb637ddb940e7b5bf3f3"
     };
     firebase.initializeApp(firebaseConfig);
-  </script>
-  <script src="script.js"></script>
+  &lt;/script&gt;
+  &lt;script src="script.js"&gt;&lt;/script&gt;
 
-<div id="bidResultModal" class="demo__card-modal">
-  <div class="demo__card-modal-content">
-    <span class="demo__card-modal-close">&times;</span>
-    <h2 id="bidResultTitle"></h2>
-    <p id="bidResultMessage"></p>
-    <div class="qr-code-container">
-      <img id="qrCode" src="" alt="QR Code">
-    </div>
-    <button id="closeResultModalBtn">Close this window</button>
-  </div>
-</div>
-</body>
-</html>
+&lt;div id="bidResultModal" class="demo__card-modal"&gt;
+  &lt;div class="demo__card-modal-content"&gt;
+    &lt;span class="demo__card-modal-close"&gt;&amp;times;&lt;/span&gt;
+    &lt;h2 id="bidResultTitle"&gt;&lt;/h2&gt;
+    &lt;p id="bidResultMessage"&gt;&lt;/p&gt;
+    &lt;div class="qr-code-container"&gt;
+      &lt;img id="qrCode" src="" alt="QR Code"&gt;
+    &lt;/div&gt;
+    &lt;button id="closeResultModalBtn"&gt;Close this window&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
 
 </code></pre>
 <style>
